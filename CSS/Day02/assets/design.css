@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+a{
+    text-decoration: none;
+}
+
+
+
+
+.vino{
+    background-color: aquamarine;
+}
+#vino{
+    background-color: blue;
+}
+section{
+    background-color: brown;
+}
+.vino > div > p, #vino > div > p{
+    background-color:rgb(178, 254, 3);
+}
+p{
+    background-color:blueviolet;
+}

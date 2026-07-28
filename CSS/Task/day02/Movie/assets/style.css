@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+a{
+    text-decoration: none;
+}
+h1{
+    background-color: blanchedalmond;
+    width: 400px;
+    height: 50px;
+    text-align: center;
+}
+.cls{
+    background-color: blueviolet;
+    width: 400px;
+    height: 100px;
+    text-align: center;
+}
+.cls>h2{
+    background-color: blue;
+}

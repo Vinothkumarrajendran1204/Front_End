@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+a{
+    text-decoration: none;
+}
+.zoho{
+    background-color: blue;
+    width: 400px;
+    height: 200px;
+    text-align: center;
+}
+.asp{
+    background-color: aliceblue;
+    width: 400px;
+    height: 200px;
+    text-align: center;
+}
+.fresh{
+    background-color: brown;
+    width: 400px;
+    height: 200px;
+    text-align: center;
+}
+.cts{
+    background-color:aquamarine;
+    width: 400px;
+    height: 200px;
+    text-align: center;
+}
+.tcs{
+    background-color:blueviolet;
+    width: 400px;
+    height: 200px;
+    text-align: center;
+}
+p,span{
+    background-color: yellow;
+    width: 400px;
+    height: 100px;
+}

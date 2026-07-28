@@ -1,0 +1,38 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+a{
+    text-decoration: none;
+}
+.dept{
+    background-color: brown;
+    width: 300px;
+    height: 50px;
+    text-align: center;
+}
+#id1{
+    background-color: blue;
+    width: 300px;
+    height: 50px;
+    text-align: center;
+}
+#id2{
+    background-color: blueviolet;
+    width: 300px;
+    height: 50px;
+    text-align: center;
+}
+h2{
+    background-color: blueviolet;
+    width: 300px;
+    height: 50px;
+    text-align: center;
+}

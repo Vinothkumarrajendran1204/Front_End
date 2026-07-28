@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Application Form</h3>
+    <form action="">
+        <p><strong>Enter Your Details</strong></p>
+        <label for="name">Enter Your Name:</label>
+        <input type="text" placeholder="Name" id="name" required>
+        <br>
+        <br>
+        <label for="age">Enter Your Age</label>
+        <input type="number" placeholder="Age" id="age" min="18" max="30" required>
+        <br>
+        <br>
+        <label for="ph-no">Enter Your Mobile Number</label>
+        <input type="tel" placeholder="Mobile Number" id="ph-no" minlength="10" maxlength="10" required>
+        <br>
+        <br>
+        <label for="num">Enter Your Alternative Number</label>
+        <input type="tel" placeholder="Mobile Number" id="num" minlength="10" maxlength="10" required>
+        <br>
+        <br>
+        <label for="mail">Enter your Email</label>
+        <input type="email" placeholder="email id" id="mail" required>
+        <br>
+        <br>
+        <label for="Degree" req>Qualification Status:</label>
+        <select id="Degree" required>
+            <option>BE</option>
+            <option>B.Tech</option>
+            <option>B.Sc</option>
+            <option>BCA</option>
+            <option>Masters</option>
+            <option>Others</option>
+        </select>
+        <br>
+        <br>
+        <label for="Gender">Gender Status</label>
+        <input type="radio" id="Gender" name="Gender Status" value="Fresher">Fresher
+        <input type="radio" id="Gender" name="Gender Status" value="Experience">Experience
+        <br>
+        <br>
+        <label for="skills">Enter Your Skills</label>
+        <input type="checkbox" id="skills" name="skill" value="frontend">Front-End
+        <input type="checkbox" id="skills" name="skill" value="backennd">Back-End
+        <input type="checkbox" id="skills" name="skill" value="database">Data-Base
+        <input type="checkbox" id="skills" name="skill" value="ai">Artificial Intelligence
+        <br>
+        <br>
+        <label>If Experience fill this details</label>
+        <br>
+        <br>
+        <textarea name="experience" id="" placeholder="Enter Your Experience Details Here"></textarea>
+        <br>
+        <br>
+        <input type="submit">
+    </form>
+</body>
+</html>                                                                                      

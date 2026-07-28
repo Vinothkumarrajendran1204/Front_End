@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+a{
+    text-decoration: none;
+}
+
+h1{
+    background-color: blueviolet;
+    color: blue;
+    width: 400px;
+    height: 40px;
+}
+.stu{
+    background-color: aqua;
+    color: blue;
+    width: 400px;
+    height: 100px;
+}
