@@ -1,0 +1,29 @@
+/* Common Style */
+.box{
+    width: 200px;
+    height: 100px;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    font-size: 20px;
+    margin: 20px;
+}
+
+/* Box 1 - Normal Position */
+.box1{
+    background-color: steelblue;
+}
+
+/* Box 2 - Relative Position */
+.box2{
+    background-color: crimson;
+
+    position: relative;
+    top: 40px;
+    left: 60px;
+}
+
+/* Box 3 - Normal Position */
+.box3{
+    background-color: seagreen;
+}

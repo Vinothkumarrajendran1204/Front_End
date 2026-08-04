@@ -1,0 +1,46 @@
+/* Center the cart on the page */
+body{
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Parent Container */
+.parent{
+    position: relative;
+    display: inline-block;
+}
+
+/* Shopping Cart */
+.cart{
+    font-size: 30px;
+    background-color: lightgray;
+    padding: 20px 40px;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+/* Notification Badge */
+.badge{
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    background-color: red;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    transform: translate(50%, -50%);
+}

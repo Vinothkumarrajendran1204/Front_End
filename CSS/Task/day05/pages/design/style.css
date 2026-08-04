@@ -1,0 +1,125 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Times New Roman', Times, serif;
+    background-color: rgb(28, 24, 24);
+}
+
+a{
+    text-decoration: none;
+}
+
+
+.navPart{
+    background-color: rgb(28, 24, 24);
+    display: flex;
+    color: white;
+    padding: 20px;
+    align-items: center;
+    font-size:large;
+    justify-content: space-between;
+}
+
+
+.navBar{
+    margin-right: 40px;
+    display: flex;
+    gap: 50px;
+    align-items: center;
+}
+
+
+.logoPart{
+    font-size: xx-large;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+}
+
+hr{
+    width: 1px;
+    color: darkgrey;
+    border-radius: 20px;
+}
+
+.mainImg{
+    background-color: rgb(28, 24, 24);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.mainImg > img{
+    border-radius: 30px;
+    box-shadow: 1px 1px 1px 1px white;
+}
+
+#about{
+    background-color: rgb(28, 24, 24);
+    display: flex;
+    color: white;
+    padding: 20px;
+    align-items: center;
+    width: 900px;
+    height: 400px;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 1px 1px 1px 1px white;
+}
+
+#spot{
+    background-color: rgb(28, 24, 24);
+    display: flex;
+    color: white;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 1px 1px 1px 1px white;
+    width: 900px;
+    height: 500px;
+    
+}
+
+#help{
+    background-color: rgb(28, 24, 24);
+    display: flex;
+    color: white;
+    padding: 20px;
+    box-shadow: 1px 1px 1px 1px white;
+    width: 900px;
+    border-radius: 30px;
+    height: 300px;
+}
+
+#contact{
+    background-color: rgb(28, 24, 24);
+    display: flex;
+    color: white;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 1px 1px 1px 1px white;
+    width: 900px;
+    height: 150px;
+}
+footer{
+    background-color: rgb(28, 24, 24);
+    display: flex;
+    color: white;
+    padding: 20px;
+    width: 900px;
+    border-radius: 30px;
+    height: 150px;
+    box-shadow: 1px 1px 1px 1px white;
+}
+.moveTop{
+    font-size:x-large;
+}
