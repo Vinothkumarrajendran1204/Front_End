@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+li:first-child {
+    background-color: lightgreen;
+    color: darkgreen;
+    font-weight: bold;
+}
+
+
+li:last-child {
+    background-color: lightcoral;
+    color: darkred;
+    font-weight: bold;
+}
