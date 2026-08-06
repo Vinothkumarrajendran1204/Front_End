@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+.parent{
+    display: flex;
+    padding: 20px;
+    justify-content: space-around;
+}
+
+.cart{
+    transition: 0.5s;
+}
+
+.cart:hover{
+    transform: scale(1.2);
+}
+
+.cart > button{
+    transition: 0.5s;
+    background-color: darkgoldenrod;
+    padding: 5px;
+    width: 50px;
+}
+
+.cart > button:hover{
+    transform: scale(1.05) translateY(-10px);
+}
