@@ -1,0 +1,164 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+.container{
+    margin: 10px;
+    display: flex;
+    background-color: bisque;
+    justify-content: space-between;
+}
+
+.logo{
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    font-size: larger;
+}
+
+.navbar{
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    align-items: center;
+    font-size: large;
+    gap: 20px;
+}
+
+.banner{
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.banner > img{
+    box-shadow: 2px 2px 2px 2px black;
+}
+
+.navigation{
+    padding: 5px;
+    border-radius: 20px;
+    border: 1px solid gray;
+    transition: 0.3s;
+}
+
+.navigation:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.comment{
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.comment > img{
+    padding: 10px;
+    width: 800px;
+    border-radius: 20px;
+    position: relative;
+}
+
+.picture{
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    position: relative;
+}
+
+.picture > img{
+    width: 600px ;
+    height: 400px;
+}
+
+.tharam{
+    font-size: larger;
+    color: blue;
+    position: absolute;
+    top: 700px;
+    right: 770px;
+}
+
+.offer{
+    font-size: larger;
+    color: blue;
+    position: absolute;
+    top: 10px;
+    right: 812px;  
+}
+
+.delivery{
+    font-size: larger;
+    color: blue;
+    position: absolute;
+    top: 30px;
+    right: 570px;
+}
+
+.item{
+    background-color: beige;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 1px 1px black;
+}
+
+.item > img{
+    padding: 5px;
+}
+
+.parentitem{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px; 
+    margin: 40px;
+    border: 1px solid black;
+    box-shadow: 12px 11px 1px 1px gray;
+    border-radius: 20px;
+}
+
+.tomato{
+    background-color: beige;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 20px;
+    border: 1px solid black;
+    box-shadow: 1px 1px 1px 1px black;
+}
+
+.tomato > img{
+    padding: 5px;
+}
+
+.parenttomato{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    margin: 40px;
+    border: 1px solid black;
+    box-shadow: 12px 11px 1px 1px gray;
+    border-radius: 20px;
+}

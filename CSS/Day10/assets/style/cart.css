@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+.parent{
+    padding: 30px;
+    margin: 20px;
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.child{
+    
+    width: 300px;
+}
+
+
+.childImg{
+    background-color: rgb(191, 234, 218);
+    padding-right: 20px;
+    padding-left: 20px;
+}
