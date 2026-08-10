@@ -67,6 +67,7 @@ a{
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     
 }
 
@@ -74,7 +75,7 @@ a{
     padding: 10px;
     width: 800px;
     border-radius: 20px;
-    position: relative;
+    
 }
 
 .picture{
@@ -93,8 +94,8 @@ a{
     font-size: larger;
     color: blue;
     position: absolute;
-    top: 700px;
-    right: 770px;
+    top: 70px;
+    right: 900px;
 }
 
 .offer{
