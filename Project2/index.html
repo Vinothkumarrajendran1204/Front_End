@@ -1,0 +1,1548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CommitCode — Consistency-Based Multi-Category Career Learning Platform</title>
+  <meta name="description" content="Turn your learning commitment into career progress. Complete daily practical tasks every 24 hours across Technology, Non-IT, Mathematics, Analytics, Management, Design, and Marketing with completion-based refund incentives.">
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       Top Demonstration & Portal Role Bar
+       Allows investors, students, staff and administrators to switch live views
+       ========================================================================= -->
+  <div class="demo-role-bar">
+    <div class="container demo-role-container">
+      <div class="demo-badge-wrap">
+        <span class="demo-live-pill">
+          <span class="demo-pulse-dot"></span>
+          Investor &amp; Multi-Category Demo
+        </span>
+        <span style="font-size: 0.8125rem; color: #CBD5E1;">Explore Live Platform Views:</span>
+      </div>
+
+      <div class="role-switcher-tabs">
+        <button class="role-tab-btn active" data-view="website">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          Main Website (7 Categories)
+        </button>
+        <button class="role-tab-btn" data-view="student-dashboard">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Student Dashboard
+        </button>
+        <button class="role-tab-btn" data-view="daily-task">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Daily Task (Day 69)
+        </button>
+        <button class="role-tab-btn" data-view="staff-portal">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          Staff Review Portal
+        </button>
+        <button class="role-tab-btn" data-view="admin-dashboard">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Admin &amp; Metrics
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       Main Header & Navigation (With 7-Category Dropdown)
+       ========================================================================= -->
+  <header class="main-header">
+    <div class="container header-container">
+      <!-- Brand Logo -->
+      <div class="brand-logo" data-action="switch-view" data-target="website">
+        <div class="brand-icon-wrap">
+          <svg class="brand-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+            <path d="M12 9l2 2 4-4" stroke="#34D399" stroke-width="2.5"/>
+          </svg>
+        </div>
+        <div class="brand-text-wrap">
+          <span class="brand-name">Commit<span>Code</span></span>
+          <span class="brand-tagline-micro">Learn. Practice. Stay Consistent. Earn Back.</span>
+        </div>
+      </div>
+
+      <!-- Main Navigation Links -->
+      <nav class="main-nav">
+        <a href="#hero" class="nav-link">Home</a>
+        <a href="#learning-paths" class="nav-link">Learning Paths</a>
+        
+        <!-- Courses Dropdown -->
+        <div class="nav-item-dropdown">
+          <a href="#courses" class="nav-link">
+            Courses
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+          </a>
+          <div class="nav-dropdown-menu" id="nav-courses-dropdown-menu">
+            <!-- Populated via JavaScript with the 7 main categories -->
+          </div>
+        </div>
+
+        <a href="#career-goals" class="nav-link">Career Goals</a>
+        <a href="#how-it-works" class="nav-link">How It Works</a>
+        <a href="#permissions" class="nav-link">Permissions</a>
+        <a href="#why-us" class="nav-link">Why CommitCode</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="header-actions">
+        <button class="btn btn-outline btn-sm" data-action="switch-view" data-target="student-dashboard">
+          Student Portal
+        </button>
+        <button class="btn btn-primary btn-sm" data-action="explore-courses">
+          Explore Courses
+        </button>
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle navigation menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav-menu" style="display: none; background: #FFFFFF; border-bottom: 1px solid var(--bg-border); padding: 20px 24px;">
+      <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+        <a href="#hero" class="nav-link">Home</a>
+        <a href="#learning-paths" class="nav-link">Choose Your Learning Path</a>
+        <div style="font-size: 0.775rem; font-weight: 800; color: var(--text-muted); text-transform: uppercase; margin-top: 6px;">7 Main Learning Categories</div>
+        <div id="mobile-courses-category-list" style="display: flex; flex-direction: column; gap: 6px; padding-left: 8px;">
+          <!-- Populated via JavaScript -->
+        </div>
+        <a href="#career-goals" class="nav-link">Explore by Career Goal</a>
+        <a href="#how-it-works" class="nav-link">How It Works (6 Steps)</a>
+        <a href="#permissions" class="nav-link">5 Free Permissions System</a>
+        <a href="#refund-calculator" class="nav-link">Refund Calculator</a>
+        <a href="#why-us" class="nav-link">Why CommitCode (Investor Overview)</a>
+        <a href="#faq" class="nav-link">FAQ Desk</a>
+      </div>
+      <div style="display: flex; gap: 10px;">
+        <button class="btn btn-outline btn-sm" style="flex: 1;" data-action="switch-view" data-target="student-dashboard">Student Portal</button>
+        <button class="btn btn-primary btn-sm" style="flex: 1;" data-action="explore-courses">Get Started</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       VIEW 1: MAIN WEBSITE (7 REORGANIZED CATEGORIES)
+       ========================================================================= -->
+  <main id="view-website">
+
+    <!-- HERO SECTION -->
+    <section class="hero-section" id="hero">
+      <div class="hero-bg-glow"></div>
+      <div class="container hero-grid">
+        <!-- Hero Text -->
+        <div class="hero-content">
+          <div class="hero-tag">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Multi-Category Career Learning Platform
+          </div>
+
+          <h1 class="hero-headline">
+            Turn Your Learning Commitment Into <span class="gradient-text">Career Progress.</span>
+          </h1>
+
+          <p class="hero-subheading">
+            Learn through structured courses, complete practical tasks every 24 hours, get support from our staff, and become eligible for a completion-based refund.
+          </p>
+
+          <div class="hero-actions">
+            <button class="btn btn-primary btn-lg" data-action="explore-courses">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+              Explore Courses
+            </button>
+            <button class="btn btn-outline btn-lg" data-action="how-it-works">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+              See How It Works
+            </button>
+          </div>
+
+          <!-- Trust Sub-bar -->
+          <div class="hero-trust-bar">
+            <div class="trust-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>5 Free Permissions Included</span>
+            </div>
+            <div class="trust-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Dedicated Staff Code Reviews</span>
+            </div>
+            <div class="trust-item">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Terms &amp; Conditions Apply*</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hero Visual Mockup Card -->
+        <div class="hero-visual-card">
+          <!-- Floating Badge Top Right -->
+          <div class="floating-badge floating-badge-top-right">
+            <div class="badge-icon-circ green">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="floating-badge-text">
+              <h5>Staff Review: Approved</h5>
+              <p>Spring Boot REST API • 15m ago</p>
+            </div>
+          </div>
+
+          <!-- Mockup Header -->
+          <div class="mockup-header">
+            <div class="mockup-user-info">
+              <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80" alt="Student avatar" class="mockup-avatar">
+              <div class="mockup-user-meta">
+                <h4>Rahul Sharma</h4>
+                <p>Java Full Stack Track • Batch 2026</p>
+              </div>
+            </div>
+            <div class="mockup-streak-pill">
+              🔥 12-Day Streak
+            </div>
+          </div>
+
+          <!-- Mockup Metric Cards -->
+          <div class="mockup-stats-grid">
+            <div class="mockup-stat-box">
+              <div class="mockup-stat-label">Daily Task Status</div>
+              <div class="mockup-stat-val">Day 18 Task Completed</div>
+              <p style="font-size: 0.75rem; color: var(--emerald-600); font-weight: 700; margin-top: 4px;">Verified by Senior Evaluator</p>
+            </div>
+
+            <div class="mockup-stat-box">
+              <div class="mockup-stat-label">Curriculum Progress</div>
+              <div class="mockup-stat-val green">Progress: 72%</div>
+              <div class="progress-bar-container">
+                <div class="progress-bar-fill" style="width: 72%;"></div>
+              </div>
+            </div>
+
+            <div class="mockup-stat-box">
+              <div class="mockup-stat-label">Flexibility Reserve</div>
+              <div class="mockup-stat-val">Permissions Remaining: 3</div>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">2 used of 5 free allocations</p>
+            </div>
+
+            <div class="mockup-stat-box">
+              <div class="mockup-stat-label">Next 24h Task Countdown</div>
+              <div class="mockup-stat-val" style="font-family: var(--font-mono); color: var(--primary-600); font-size: 1.15rem;">
+                <span class="live-countdown-display">08:42:15</span>
+              </div>
+              <p style="font-size: 0.75rem; color: var(--text-muted); margin-top: 4px;">Day 19 unlocks soon</p>
+            </div>
+          </div>
+
+          <!-- Refund Potential Strip Inside Mockup -->
+          <div style="background: linear-gradient(135deg, #1E293B, #0F172A); color: #FFFFFF; border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; justify-content: space-between;">
+            <div>
+              <div style="font-size: 0.725rem; color: #94A3B8; text-transform: uppercase; font-weight: 700;">Potential Completion Refund</div>
+              <div style="font-size: 1.15rem; font-weight: 800; color: #34D399;">Up to ₹20,000 (50%)</div>
+            </div>
+            <span style="font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 4px 10px; border-radius: 6px; color: #F8FAFC;">
+              Locked (Progress 72/100)
+            </span>
+          </div>
+
+          <!-- Floating Badge Bottom Left -->
+          <div class="floating-badge floating-badge-bottom-left">
+            <div class="badge-icon-circ blue">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </div>
+            <div class="floating-badge-text">
+              <h5>Staff Review: Approved</h5>
+              <p>15-Minute Doubt SLA</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         HOMEPAGE SECTION 1: "Choose Your Learning Path" (7 Main Categories)
+         ======================================================================= -->
+    <section class="section-spacer learning-paths-section" id="learning-paths">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Structured Career Paths</div>
+          <h2 class="section-title">Choose Your Learning Path</h2>
+          <p class="section-subtitle">
+            Whether you want to become a software developer, improve your mathematical skills, build business knowledge, or develop professional skills, choose a learning path designed for your goals.
+          </p>
+        </div>
+
+        <!-- 7 Main Learning Category Cards Grid -->
+        <div class="learning-paths-grid" id="learning-paths-container">
+          <!-- Populated dynamically via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         HOMEPAGE SECTION 2: "Explore Courses by Career Goal" (9 Goals)
+         ======================================================================= -->
+    <section class="section-spacer career-goals-section" id="career-goals">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Outcome-Driven Roadmap</div>
+          <h2 class="section-title">Explore Courses by Career Goal</h2>
+          <p class="section-subtitle">
+            Target specific high-demand career milestones with curated tracks designed for immediate professional impact.
+          </p>
+        </div>
+
+        <!-- 9 Career Goals Grid -->
+        <div class="career-goals-grid" id="career-goals-container">
+          <!-- Populated dynamically via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         REORGANIZED COURSE MARKETPLACE (With Top 7 Large Category Cards & Filters)
+         ======================================================================= -->
+    <section class="section-spacer course-catalog-section" id="courses">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Multi-Category Course Marketplace</div>
+          <h2 class="section-title">Explore Career-Focused Courses</h2>
+          <p class="section-subtitle">
+            Complete daily practical tasks, receive human staff code evaluations, and become eligible for up to 50% completion refund.
+          </p>
+        </div>
+
+        <!-- Top Large Category Cards -->
+        <div class="marketplace-categories-top">
+          <div class="marketplace-category-grid" id="marketplace-top-categories-grid">
+            <!-- Populated via JavaScript with the 7 large cards:
+                 [ IT & TECHNOLOGY ]
+                 [ NON-IT & PROFESSIONAL ]
+                 [ MATH & ANALYTICS ]
+                 [ MANAGEMENT & BUSINESS ]
+                 [ DESIGN & CREATIVE ]
+                 [ MARKETING & SALES ]
+                 [ CAREER & PLACEMENT ]
+            -->
+          </div>
+        </div>
+
+        <!-- Section Tabs (All Courses, Popular, Featured, New) -->
+        <div class="catalog-section-tabs" id="catalog-section-tabs-bar">
+          <button class="cat-tab-btn active" data-tab="all">All Courses</button>
+          <button class="cat-tab-btn" data-tab="popular">Most Popular</button>
+          <button class="cat-tab-btn" data-tab="featured">Featured</button>
+          <button class="cat-tab-btn" data-tab="new">Newest</button>
+        </div>
+
+        <!-- Filter and Search Controls Bar -->
+        <div class="catalog-controls">
+          <div class="catalog-search-row">
+            <!-- Global Search Bar -->
+            <div class="search-input-wrap">
+              <svg class="search-input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" id="course-search-input" class="catalog-search-input" placeholder="Search courses, skills, or career paths... (e.g. Java, Tally, Math, Management, Digital Marketing, AI, Excel)">
+            </div>
+
+            <!-- Price Filter -->
+            <select id="course-price-filter" class="filter-select">
+              <option value="all">All Prices</option>
+              <option value="under-15k">Under ₹15,000</option>
+              <option value="15k-25k">₹15,000 – ₹25,000</option>
+              <option value="25k-35k">₹25,000 – ₹35,000</option>
+              <option value="above-35k">Above ₹35,000</option>
+            </select>
+
+            <!-- Difficulty Level Filter -->
+            <select id="course-level-filter" class="filter-select">
+              <option value="all">All Levels</option>
+              <option value="Beginner">Beginner</option>
+              <option value="Intermediate">Intermediate</option>
+              <option value="Advanced">Advanced</option>
+            </select>
+
+            <!-- Sort Filter -->
+            <select id="course-sort-filter" class="filter-select">
+              <option value="featured">Sort: Featured</option>
+              <option value="popular">Sort: Most Popular</option>
+              <option value="newest">Sort: Newest</option>
+              <option value="rating">Sort: Highest Rated</option>
+              <option value="price-low">Sort: Price Low to High</option>
+              <option value="price-high">Sort: Price High to Low</option>
+              <option value="duration">Sort: Duration</option>
+            </select>
+          </div>
+
+          <!-- Category Pills Bar (7 Categories + All) -->
+          <div class="category-pills-bar" id="category-pills-container">
+            <!-- Populated via JavaScript -->
+          </div>
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; font-size: 0.875rem; color: var(--text-muted); flex-wrap: wrap; gap: 10px;">
+          <span id="courses-found-count" style="font-weight: 700; color: var(--text-primary);">Showing all programs</span>
+          <span>*Eligibility is subject to course completion requirements and Refund Policy.</span>
+        </div>
+
+        <!-- Course Cards Grid -->
+        <div class="courses-grid" id="courses-grid-container">
+          <!-- Populated via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         INTERACTIVE COMPLETION REFUND CALCULATOR
+         ======================================================================= -->
+    <section class="section-spacer calculator-section" id="refund-calculator">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Interactive Incentive Simulator</div>
+          <h2 class="section-title">Calculate Your Completion Refund Potential</h2>
+          <p class="section-subtitle">
+            See how committing to 100% task completion reduces your effective cost of education across all 7 learning categories.
+          </p>
+        </div>
+
+        <div class="calc-container-card">
+          <!-- Controls Pane -->
+          <div class="calc-controls-pane">
+            <h3>Plan Your Learning Journey</h3>
+            <p>Select any career specialization and adjust your planned commitment percentage.</p>
+
+            <div class="calc-field-group">
+              <label class="calc-field-label" for="calc-course-select">
+                <span>Select Target Course</span>
+                <span style="color: var(--primary-600); font-weight: 600;">7 Disciplines Available</span>
+              </label>
+              <select class="calc-select" id="calc-course-select">
+                <!-- Populated dynamically via JavaScript with grouped options -->
+              </select>
+            </div>
+
+            <div class="calc-field-group">
+              <div class="calc-field-label">
+                <span>Planned Task Completion Consistency</span>
+                <span id="calc-slider-val-badge" style="background: var(--primary-50); color: var(--primary-700); padding: 2px 8px; border-radius: 4px; font-weight: 800;">100%</span>
+              </div>
+              <input type="range" id="calc-consistency-slider" min="50" max="100" step="5" value="100" style="width: 100%; accent-color: var(--primary-600); cursor: pointer;">
+              <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 6px;">
+                <span>50% (Standard Access)</span>
+                <span>75% (Intermediate)</span>
+                <span style="color: var(--emerald-600); font-weight: 700;">100% (Refund Eligible)</span>
+              </div>
+            </div>
+
+            <div style="background: var(--bg-surface); border: 1px solid var(--bg-border); border-radius: 12px; padding: 16px; font-size: 0.825rem; color: var(--text-secondary);">
+              <strong>Flexibility Safety Net:</strong> Every course includes 5 free permissions for life emergencies, illness, or travel without losing your refund eligibility status.
+            </div>
+          </div>
+
+          <!-- Output Pane -->
+          <div class="calc-output-pane">
+            <div class="calc-output-header">Projected Financial Breakdown</div>
+
+            <div class="calc-stat-row">
+              <span style="color: #CBD5E1;">Course Tuition Fee</span>
+              <span class="stat-v" id="calc-out-fee">₹40,000</span>
+            </div>
+
+            <div class="calc-stat-row">
+              <span style="color: #CBD5E1;">Required Daily Tasks</span>
+              <span class="stat-v" id="calc-out-tasks">120 / 120 Tasks</span>
+            </div>
+
+            <div class="calc-stat-row">
+              <span style="color: #CBD5E1;">Permissions Allocation</span>
+              <span class="stat-v" id="calc-out-perms">5 Free Included</span>
+            </div>
+
+            <div class="calc-stat-row">
+              <span style="color: #CBD5E1;">Refund Eligibility Status</span>
+              <span class="stat-v" id="calc-out-status">Eligible for 50% Refund</span>
+            </div>
+
+            <div class="calc-stat-row highlight">
+              <div>
+                <div style="font-size: 0.8125rem; color: #94A3B8; text-transform: uppercase;">Potential Completion Refund</div>
+                <div style="font-size: 0.725rem; color: #64748B;">Disbursed on 100% completion</div>
+              </div>
+              <span class="stat-v" id="calc-out-refund">Up to ₹20,000</span>
+            </div>
+
+            <div class="calc-stat-row" style="border-top: 1px solid rgba(255,255,255,0.15); padding-top: 14px;">
+              <span style="font-weight: 700; color: #F8FAFC;">Effective Net Learning Cost</span>
+              <span style="font-size: 1.25rem; font-weight: 800; color: #60A5FA;" id="calc-out-net">₹20,000</span>
+            </div>
+
+            <div class="calc-tc-notice">
+              “Complete 100% of the defined course requirements and become eligible for a completion refund of up to 50%, subject to the course Refund Policy and Terms &amp; Conditions. Eligibility is subject to course completion requirements and Refund Policy.”
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         HOW IT WORKS SECTION (6-Step Visual Process)
+         ======================================================================= -->
+    <section class="section-spacer how-it-works-section" id="how-it-works">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Structured 6-Step Journey</div>
+          <h2 class="section-title">How CommitCode Works</h2>
+          <p class="section-subtitle">
+            A battle-tested methodology engineered to build consistency, genuine mastery, and real career transformation across all disciplines.
+          </p>
+        </div>
+
+        <div class="steps-timeline-grid">
+          <!-- Step 1 -->
+          <div class="step-process-card">
+            <div class="step-badge-num">1</div>
+            <h3 class="step-title">Choose Your Course</h3>
+            <p class="step-description">
+              Browse our catalog across Technology, Non-IT Skills, Mathematics, Analytics, Management, Design, and Placement.
+            </p>
+            <div class="step-highlight-tag">7 Career Learning Categories</div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="step-process-card">
+            <div class="step-badge-num">2</div>
+            <h3 class="step-title">Enroll &amp; Pay</h3>
+            <p class="step-description">
+              Pay the transparent course-specific tuition fee. Your student dashboard is instantly loaded with curriculum materials and 5 free permissions.
+            </p>
+            <div class="step-highlight-tag">Instant Access + 5 Free Permissions</div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="step-process-card">
+            <div class="step-badge-num">3</div>
+            <h3 class="step-title">Watch Recorded Lessons</h3>
+            <p class="step-description">
+              Watch bite-sized, high-definition conceptual videos on your schedule each day. Zero fluff, 100% practical architecture and patterns.
+            </p>
+            <div class="step-highlight-tag">Self-Paced HD Video Lessons</div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="step-process-card">
+            <div class="step-badge-num">4</div>
+            <h3 class="step-title">Complete Daily Tasks</h3>
+            <p class="step-description">
+              Solve hands-on practical assignments unlocked every 24 hours. Submit your work before the deadline countdown reaches zero.
+            </p>
+            <div class="step-highlight-tag">24-Hour Submission Window</div>
+          </div>
+
+          <!-- Step 5 -->
+          <div class="step-process-card">
+            <div class="step-badge-num">5</div>
+            <h3 class="step-title">Staff Support &amp; Verification</h3>
+            <p class="step-description">
+              Get dedicated evaluations from our technical and domain staff. If you get stuck, access staff doubt clarification with average 15m response SLA.
+            </p>
+            <div class="step-highlight-tag">Manual Review &amp; Doubts SLA &lt; 15m</div>
+          </div>
+
+          <!-- Step 6 -->
+          <div class="step-process-card" style="border-color: var(--emerald-300); background: var(--emerald-50);">
+            <div class="step-badge-num" style="background: var(--emerald-600);">6</div>
+            <h3 class="step-title" style="color: var(--emerald-900);">Complete 100% → Refund</h3>
+            <p class="step-description" style="color: var(--emerald-800);">
+              Successfully complete 100% of defined course tasks to become eligible for up to 50% completion refund credited directly to your account.
+            </p>
+            <div class="step-highlight-tag" style="background: #FFFFFF; color: var(--emerald-700);">Terms &amp; Conditions Apply*</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         PERMISSION SYSTEM SHOWCASE
+         ======================================================================= -->
+    <section class="section-spacer permissions-section" id="permissions">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Flexibility Without Failure</div>
+          <h2 class="section-title">The 5 Free Permissions System</h2>
+          <p class="section-subtitle">
+            We understand that life happens. Sickness, university exams, or urgent work travel shouldn't destroy your consistency record or forfeit your refund.
+          </p>
+        </div>
+
+        <div class="permissions-container-box">
+          <div class="permission-banner-row">
+            <div class="perm-banner-text">
+              <h3>5 Complimentary Permissions Included</h3>
+              <p>Every student receives 5 flexible permission tokens upon enrollment to use for 24-hour extensions.</p>
+            </div>
+            <div style="display: flex; gap: 12px; align-items: center;">
+              <span id="permission-remaining-count-badge" style="background: var(--primary-50); color: var(--primary-700); font-weight: 800; padding: 8px 16px; border-radius: var(--radius-full); border: 1px solid var(--primary-200);">
+                3 Available
+              </span>
+              <button class="btn btn-primary btn-sm btn-trigger-buy-permissions">
+                Purchase Additional
+              </button>
+            </div>
+          </div>
+
+          <!-- 5 Visual Permission Slots -->
+          <div class="permission-slots-display" id="permission-slots-container">
+            <!-- Populated via JavaScript -->
+          </div>
+
+          <!-- Policy & Rules Grid -->
+          <div class="permission-policy-grid">
+            <div class="perm-policy-item">
+              <svg class="perm-policy-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+              <div class="perm-policy-text">
+                <h4>24-Hour Deadline Extension</h4>
+                <p>Activating a permission gives you an extra 24 hours to complete your current assignment without penalty to your daily streak.</p>
+              </div>
+            </div>
+
+            <div class="perm-policy-item">
+              <svg class="perm-policy-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <div class="perm-policy-text">
+                <h4>Refund Eligibility Protection</h4>
+                <p>Approved permission usage protects your 100% completion requirement so you remain eligible for the completion refund.</p>
+              </div>
+            </div>
+
+            <div class="perm-policy-item">
+              <svg class="perm-policy-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <div class="perm-policy-text">
+                <h4>Need More Flexibility?</h4>
+                <p>If you exhaust your 5 free permissions, supplemental permissions can be purchased anytime from your student portal according to course terms.</p>
+              </div>
+            </div>
+
+            <div class="perm-policy-item">
+              <svg class="perm-policy-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              <div class="perm-policy-text">
+                <h4>Transparent Audit Trail</h4>
+                <p>All permission activations and approved medical/work exceptions are documented in your student portal for complete transparency.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         INVESTOR & BUSINESS OVERVIEW SECTION ("Why CommitCode?")
+         ======================================================================= -->
+    <section class="section-spacer investor-section" id="why-us">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Investor &amp; Strategic Value</div>
+          <h2 class="section-title">Why CommitCode? The Discipline-First Model</h2>
+          <p class="section-subtitle">
+            Traditional online courses fail because they lack accountability. CommitCode combines high-touch human evaluation with a powerful completion incentive to drive unprecedented 88%+ completion rates across all disciplines.
+          </p>
+        </div>
+
+        <!-- 4 Core Investor Pillar Cards -->
+        <div class="investor-cards-grid">
+          <!-- Card 1: Problem -->
+          <div class="investor-card">
+            <div class="investor-card-icon red">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <h3 class="investor-card-title">1. The Problem</h3>
+            <p class="investor-card-text">
+              Students struggle to remain consistent with online learning. Industry-wide MOOC completion rates languish below 8%, resulting in wasted fees, unacquired skills, and high student churn.
+            </p>
+            <div class="investor-card-metric">Industry Issue: 92% Course Abandonment</div>
+          </div>
+
+          <!-- Card 2: Solution -->
+          <div class="investor-card">
+            <div class="investor-card-icon blue">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h3 class="investor-card-title">2. Our Solution</h3>
+            <p class="investor-card-text">
+              Daily practical accountability combined with structured human staff support and an attractive performance-based refund incentive that rewards complete course follow-through.
+            </p>
+            <div class="investor-card-metric">CommitCode Rate: 88.4% Verified Completion</div>
+          </div>
+
+          <!-- Card 3: Business Model -->
+          <div class="investor-card">
+            <div class="investor-card-icon purple">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <h3 class="investor-card-title">3. Business Model</h3>
+            <p class="investor-card-text">
+              Multiple course streams with domain-specific upfront pricing, auxiliary permission purchases, corporate team subscriptions, and high referral loops powered by refund success stories.
+            </p>
+            <div class="investor-card-metric">Monetization: Tuition + Extra Permissions + B2B</div>
+          </div>
+
+          <!-- Card 4: Growth Opportunity -->
+          <div class="investor-card">
+            <div class="investor-card-icon green">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+            <h3 class="investor-card-title">4. Growth &amp; Scale</h3>
+            <p class="investor-card-text">
+              Multi-category expansion spanning Technology, Professional Skills, Mathematics, Analytics, Management, Design, and Placement Preparation.
+            </p>
+            <div class="investor-card-metric">Market TAM: $12B+ Indian &amp; Global EdTech</div>
+          </div>
+        </div>
+
+        <!-- Business Flow Diagram -->
+        <div class="business-flow-box">
+          <h3 class="flow-title">The CommitCode Value Cycle</h3>
+          <p class="flow-subtitle">How structured daily accountability produces sustainable outcomes for students and platform health</p>
+
+          <div class="flow-steps-track">
+            <div class="flow-step-node">
+              <div class="flow-node-num">1</div>
+              <div class="flow-node-title">Student Enrollment</div>
+              <div class="flow-node-desc">Upfront course fee + 5 free permissions</div>
+            </div>
+
+            <div class="flow-arrow-separator">→</div>
+
+            <div class="flow-step-node">
+              <div class="flow-node-num">2</div>
+              <div class="flow-node-title">Course Delivery</div>
+              <div class="flow-node-desc">Modular recorded video lessons</div>
+            </div>
+
+            <div class="flow-arrow-separator">→</div>
+
+            <div class="flow-step-node">
+              <div class="flow-node-num">3</div>
+              <div class="flow-node-title">Daily Engagement</div>
+              <div class="flow-node-desc">24h practical tasks &amp; staff verification</div>
+            </div>
+
+            <div class="flow-arrow-separator">→</div>
+
+            <div class="flow-step-node">
+              <div class="flow-node-num">4</div>
+              <div class="flow-node-title">100% Completion</div>
+              <div class="flow-node-desc">All assignments approved</div>
+            </div>
+
+            <div class="flow-arrow-separator">→</div>
+
+            <div class="flow-step-node" style="background: var(--emerald-50); border-color: var(--emerald-300);">
+              <div class="flow-node-num" style="background: var(--emerald-600); color: #FFFFFF;">5</div>
+              <div class="flow-node-title" style="color: var(--emerald-800);">Refund Eligibility</div>
+              <div class="flow-node-desc" style="color: var(--emerald-700);">Up to 50% refund disbursed (T&amp;C Apply)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         TRUST & TRANSPARENCY SECTION
+         ======================================================================= -->
+    <section class="section-spacer trust-section" id="trust">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Zero Ambiguity • Complete Integrity</div>
+          <h2 class="section-title">Built on Trust &amp; Radical Transparency</h2>
+          <p class="section-subtitle">
+            CommitCode is an educational accountability platform, not an investment scheme or loan product. We clearly state all conditions upfront.
+          </p>
+        </div>
+
+        <div class="trust-grid">
+          <div class="trust-card">
+            <div class="trust-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            </div>
+            <h3 class="trust-card-title">1. Defined Completion Criteria</h3>
+            <p class="trust-card-text">
+              Refund eligibility requires 100% of defined course tasks to be submitted within their 24h windows (or approved permissions) and approved by staff.
+            </p>
+          </div>
+
+          <div class="trust-card">
+            <div class="trust-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+            </div>
+            <h3 class="trust-card-title">2. Upfront Disclosure</h3>
+            <p class="trust-card-text">
+              Every course displays its exact syllabus, number of tasks, video hours, tuition fee, and maximum refund ceiling before enrollment.
+            </p>
+          </div>
+
+          <div class="trust-card">
+            <div class="trust-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+            <h3 class="trust-card-title">3. Objective Staff Reviews</h3>
+            <p class="trust-card-text">
+              All submissions are graded against standardized industry rubrics and test suites. Transparent revision feedback is provided on non-compliant code.
+            </p>
+          </div>
+
+          <div class="trust-card">
+            <div class="trust-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+            </div>
+            <h3 class="trust-card-title">4. Clear Permission Rules</h3>
+            <p class="trust-card-text">
+              Permissions are non-transferable tokens designed exclusively for 24-hour deadline extensions or excused emergency periods.
+            </p>
+          </div>
+
+          <div class="trust-card">
+            <div class="trust-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <h3 class="trust-card-title">5. Course-Specific Refund Caps</h3>
+            <p class="trust-card-text">
+              Completion refunds are capped at up to 50% depending on the specific program's operational costs, with exact rupee limits published on every card.
+            </p>
+          </div>
+
+          <div class="trust-card">
+            <div class="trust-card-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <h3 class="trust-card-title">6. Regulatory Compliance</h3>
+            <p class="trust-card-text">
+              The platform does not offer guaranteed income, investment returns, or financial loans. Eligibility is subject to course completion requirements and Refund Policy.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         SAMPLE TESTIMONIALS SECTION
+         ======================================================================= -->
+    <section class="section-spacer testimonials-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-badge">Student Success Stories</div>
+          <h2 class="section-title">Consistency Delivers Real Career Outcomes</h2>
+          <p class="section-subtitle">
+            See how daily practice transformed learning habits and career trajectories across diverse disciplines.
+          </p>
+        </div>
+
+        <div class="testimonials-grid" id="testimonials-container">
+          <!-- Populated via JavaScript with sample testimonials tagged [Sample Testimonial] -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =======================================================================
+         FAQ ACCORDION SECTION
+         ======================================================================= -->
+    <section class="section-spacer faq-section" id="faq">
+      <div class="container container-narrow">
+        <div class="section-header">
+          <div class="section-badge">Frequently Asked Questions</div>
+          <h2 class="section-title">Everything You Need to Know</h2>
+          <p class="section-subtitle">
+            Clear answers to common questions regarding our daily task cycles, permissions, staff evaluations, and completion refund terms.
+          </p>
+        </div>
+
+        <div class="faq-accordion-wrap" id="faq-accordion-container">
+          <!-- Populated via JavaScript with 10 comprehensive FAQs -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="section-spacer-sm" style="background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%); color: #FFFFFF;">
+      <div class="container" style="text-align: center; max-width: 800px;">
+        <h2 style="font-size: 2.25rem; font-weight: 800; margin-bottom: 16px;">Ready to Transform Your Consistency?</h2>
+        <p style="font-size: 1.125rem; color: #DBEAFE; margin-bottom: 32px;">
+          Join thousands of learners building real skills every 24 hours. Enroll in any course today with 5 free permissions.
+        </p>
+        <div style="display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;">
+          <button class="btn btn-white btn-lg" data-action="explore-courses">Explore Courses</button>
+          <button class="btn btn-outline btn-lg" style="background: rgba(255,255,255,0.15); color: #FFFFFF; border-color: rgba(255,255,255,0.3);" data-action="open-calc">
+            Calculate Completion Refund
+          </button>
+        </div>
+        <p style="font-size: 0.775rem; color: #BFDBFE; margin-top: 20px;">*Eligibility is subject to course completion requirements and Refund Policy.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       VIEW 2: STUDENT DASHBOARD
+       ========================================================================= -->
+  <main id="view-student-dashboard" style="display: none;">
+    <div class="container dashboard-view-wrapper">
+      <!-- Welcome Banner -->
+      <div class="student-welcome-banner">
+        <div class="welcome-student-meta">
+          <h2>Welcome back, <span id="student-banner-name">Rahul Sharma</span> 👋</h2>
+          <p id="student-banner-course">Java Full Stack Development (68% Complete)</p>
+        </div>
+        <div class="banner-quick-stats">
+          <div class="banner-stat-bubble">
+            <div class="banner-stat-num" id="student-dash-streak-text">12 Days 🔥</div>
+            <div class="banner-stat-lbl">Active Streak</div>
+          </div>
+          <div class="banner-stat-bubble">
+            <div class="banner-stat-num" id="student-dash-perms-text">3 Left</div>
+            <div class="banner-stat-lbl">Permissions</div>
+          </div>
+          <button class="btn btn-white btn-sm" data-action="switch-view" data-target="daily-task">
+            Go to Day 69 Task →
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Metric Cards Grid -->
+      <div class="dashboard-kpi-grid">
+        <div class="dashboard-kpi-card">
+          <div class="kpi-card-header">
+            <span class="kpi-card-title">Overall Progress</span>
+            <div class="kpi-card-icon" style="background: var(--primary-50); color: var(--primary-600);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+            </div>
+          </div>
+          <div class="kpi-card-val" id="student-dash-progress-text">68%</div>
+          <div class="progress-bar-container">
+            <div class="progress-bar-fill" id="student-dash-progress-fill" style="width: 68%;"></div>
+          </div>
+          <div class="kpi-card-sub" style="margin-top: 8px;" id="student-dash-tasks-count">68 / 120 Tasks Completed</div>
+        </div>
+
+        <div class="dashboard-kpi-card">
+          <div class="kpi-card-header">
+            <span class="kpi-card-title">Next Task Deadline</span>
+            <div class="kpi-card-icon" style="background: var(--amber-50); color: var(--amber-600);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>
+            </div>
+          </div>
+          <div class="kpi-card-val live-countdown-display" style="font-family: var(--font-mono); color: var(--primary-600);">
+            08:42:15
+          </div>
+          <div class="kpi-card-sub">Submit Day 69 before 24h expiry</div>
+        </div>
+
+        <div class="dashboard-kpi-card">
+          <div class="kpi-card-header">
+            <span class="kpi-card-title">Permission Balance</span>
+            <div class="kpi-card-icon" style="background: var(--purple-50); color: var(--purple-600);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+          </div>
+          <div class="kpi-card-val">3 Remaining</div>
+          <div class="kpi-card-sub">2 of 5 free allocations used</div>
+        </div>
+
+        <div class="dashboard-kpi-card">
+          <div class="kpi-card-header">
+            <span class="kpi-card-title">Potential Refund</span>
+            <div class="kpi-card-icon" style="background: var(--emerald-50); color: var(--emerald-600);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            </div>
+          </div>
+          <div class="kpi-card-val" style="color: var(--emerald-600); font-size: 1.45rem;">Up to ₹20,000</div>
+          <div class="kpi-card-sub" id="student-dash-refund-status">Locked (Unlocks on 100% completion)</div>
+        </div>
+      </div>
+
+      <!-- Main Dashboard Grid -->
+      <div class="dashboard-content-grid">
+        <!-- Left Column -->
+        <div>
+          <!-- Today's Assignment Card -->
+          <div class="dash-panel-card">
+            <div class="dash-panel-header">
+              <div class="dash-panel-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                Today's Daily Task
+              </div>
+              <span class="task-meta-pill" style="background: #EFF6FF; color: #1D4ED8;">Day 69 of 120</span>
+            </div>
+
+            <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">
+              Day 69 — Java Collections &amp; Stream API Practice
+            </h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.55; margin-bottom: 20px;">
+              Build a high-throughput transaction processor utilizing Java 17 Collections, ConcurrentHashMap, and custom Stream API grouping collectors.
+            </p>
+
+            <div class="countdown-ticking-box">
+              <div>
+                <div style="font-size: 0.775rem; text-transform: uppercase; color: #94A3B8; font-weight: 700;">Submission Countdown</div>
+                <div style="font-size: 0.8125rem; color: #E2E8F0;">24-hour window active</div>
+              </div>
+              <div class="countdown-digits live-countdown-display">08:42:15</div>
+            </div>
+
+            <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+              <button class="btn btn-primary" data-action="switch-view" data-target="daily-task">
+                Open Task Workspace →
+              </button>
+              <button class="btn btn-outline" id="btn-use-permission-sim">
+                Activate 24h Permission Extension
+              </button>
+            </div>
+          </div>
+
+          <!-- Permission Usage Log -->
+          <div class="dash-panel-card">
+            <div class="dash-panel-header">
+              <div class="dash-panel-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Permission History &amp; Audit
+              </div>
+              <button class="btn btn-outline btn-sm btn-trigger-buy-permissions">
+                + Buy Permissions
+              </button>
+            </div>
+
+            <div class="staff-table-wrap">
+              <table class="staff-table">
+                <thead>
+                  <tr>
+                    <th>Slot</th>
+                    <th>Date</th>
+                    <th>Reason / Details</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="student-permission-history-tbody">
+                  <!-- Populated via JavaScript -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div>
+          <!-- Latest Staff Review -->
+          <div class="dash-panel-card">
+            <div class="dash-panel-header">
+              <div class="dash-panel-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Latest Staff Evaluation
+              </div>
+              <span class="feedback-badge-approved">Approved ★★★★★</span>
+            </div>
+
+            <div class="feedback-box">
+              <div class="feedback-reviewer-row">
+                <span class="feedback-reviewer-name">Dr. Ananya Roy (Staff Tech Lead)</span>
+                <span style="font-size: 0.75rem; color: var(--text-muted);">Day 68 Task</span>
+              </div>
+              <p class="feedback-text-content">
+                "Excellent use of MapStruct for entity-DTO transformations and precise validation annotations (@Valid, @NotNull). Exception handling controller advice is clean and production-ready."
+              </p>
+            </div>
+          </div>
+
+          <!-- Doubt Clarification Quick Box -->
+          <div class="dash-panel-card" style="background: linear-gradient(135deg, var(--bg-surface) 0%, #FFFFFF 100%);">
+            <div class="dash-panel-header">
+              <div class="dash-panel-title">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+                Staff Doubt Support
+              </div>
+              <span class="task-meta-pill" style="background: #ECFDF5; color: #059669;">SLA &lt; 15 Mins</span>
+            </div>
+
+            <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 16px;">
+              Encountered a blocker or conceptual hurdle? Our dedicated engineering and domain staff is active 24/7.
+            </p>
+
+            <button class="btn btn-outline" style="width: 100%;" id="btn-ask-staff-doubt">
+              Submit a Doubt Ticket
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       VIEW 3: DAILY TASK WORKSPACE (Day 69)
+       ========================================================================= -->
+  <main id="view-daily-task" style="display: none;">
+    <div class="container task-workspace-container">
+      <!-- Task Header Bar -->
+      <div class="task-header-bar">
+        <div class="task-title-group">
+          <div style="font-size: 0.8125rem; font-weight: 700; color: var(--primary-600); text-transform: uppercase; margin-bottom: 4px;">
+            IT &amp; Technology • Software Development Track
+          </div>
+          <h2 id="task-view-title">Day 69 — Java Collections &amp; Stream API Practice</h2>
+          <div class="task-meta-pills">
+            <span class="task-meta-pill" style="background: #EFF6FF; color: #1D4ED8;">Difficulty: Intermediate</span>
+            <span class="task-meta-pill" style="background: #F5F3FF; color: #6D28D9;">Est. Time: 90 Mins</span>
+            <span class="task-meta-pill" style="background: #ECFDF5; color: #059669;">Max Points: 100</span>
+          </div>
+        </div>
+
+        <div style="text-align: right;">
+          <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Submission Deadline</div>
+          <div class="live-countdown-display" style="font-family: var(--font-mono); font-size: 1.6rem; font-weight: 800; color: #DC2626;">
+            08:42:15
+          </div>
+        </div>
+      </div>
+
+      <!-- Task Workspace Grid -->
+      <div class="task-workspace-grid">
+        <!-- Instructions & Objectives -->
+        <div class="task-instructions-pane">
+          <h3 class="instruction-block-title">Problem Statement</h3>
+          <p id="task-view-desc" style="font-size: 0.9375rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 20px;">
+            Build a high-throughput In-Memory Transaction Processing Engine using Java 17 Collections, ConcurrentHashMap, Custom Comparators, and declarative Stream API filters and reductions.
+          </p>
+
+          <h3 class="instruction-block-title">Learning Objectives</h3>
+          <div class="objectives-checklist" id="task-view-objectives">
+            <!-- Populated via JavaScript -->
+          </div>
+
+          <h3 class="instruction-block-title">Step-by-Step Instructions</h3>
+          <ol id="task-view-instructions" style="padding-left: 20px; margin-bottom: 24px;">
+            <!-- Populated via JavaScript -->
+          </ol>
+
+          <!-- Code Snippet Box -->
+          <div class="code-block-container">
+            <div class="code-block-header">
+              <span>TransactionProcessor.java (Starter Interface)</span>
+              <button class="btn btn-outline btn-sm" id="btn-copy-starter-code" style="padding: 4px 10px; font-size: 0.75rem; color: #FFFFFF; border-color: rgba(255,255,255,0.2);">
+                Copy Code
+              </button>
+            </div>
+            <pre class="code-pre-box"><code id="task-code-snippet"></code></pre>
+          </div>
+        </div>
+
+        <!-- Submission Form -->
+        <div class="task-submission-pane">
+          <h3 class="instruction-block-title">Submit Your Solution</h3>
+          <p style="font-size: 0.875rem; color: var(--text-muted); margin-bottom: 20px;">
+            Staff evaluates code quality, test coverage, and documentation before approving your streak.
+          </p>
+
+          <div id="task-submission-status-alert" class="submission-status-alert">
+            <!-- Populated via JavaScript -->
+          </div>
+
+          <form id="daily-task-submit-form">
+            <div class="form-group">
+              <label class="form-label" for="task-github-url-input">GitHub Repository / Solution Link *</label>
+              <input type="url" id="task-github-url-input" class="form-input" placeholder="https://github.com/your-user/commitcode-day69" required value="https://github.com/rahul-dev/commitcode-day69-streams">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Upload Archive / Solution Files (Optional)</label>
+              <div class="file-dropzone-sim">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#94A3B8" stroke-width="2" style="margin: 0 auto 8px auto;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                <div style="font-size: 0.875rem; font-weight: 600; color: var(--text-secondary);">Drag and drop zip/jar/pdf files here</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">or click to browse from your computer</div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="task-notes-input">Implementation Notes for Reviewer</label>
+              <textarea id="task-notes-input" class="form-input" rows="3" placeholder="Describe any edge cases handled or optimizations made...">Implemented custom grouping collector and unit test suite with Mockito. Handled edge cases where currency conversion list was empty.</textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; margin-bottom: 12px;">
+              Submit Task for Staff Review
+            </button>
+            <button type="button" class="btn btn-outline" style="width: 100%;" id="btn-ask-staff-doubt">
+              Need Help? Ask Staff a Doubt
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       VIEW 4: STAFF REVIEW PORTAL
+       ========================================================================= -->
+  <main id="view-staff-portal" style="display: none;">
+    <div class="container staff-portal-view">
+      <!-- Staff Header Banner -->
+      <div class="staff-header-banner">
+        <div>
+          <div style="font-size: 0.775rem; font-weight: 700; color: var(--primary-600); text-transform: uppercase; margin-bottom: 4px;">
+            CommitCode Staff Evaluator Workspace
+          </div>
+          <h2 style="font-size: 1.75rem; font-weight: 800; color: var(--text-primary);">Submissions &amp; Code Review Queue</h2>
+        </div>
+        <div class="staff-stats-pill-row">
+          <span class="task-meta-pill" style="background: #EFF6FF; color: #1D4ED8;" id="staff-pending-count-badge">3 Pending</span>
+          <span class="task-meta-pill" style="background: #ECFDF5; color: #059669;">Avg SLA: 11.4 Mins</span>
+        </div>
+      </div>
+
+      <!-- Submissions Queue Table -->
+      <div class="staff-queue-card">
+        <div class="dash-panel-header">
+          <div class="dash-panel-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            Pending Student Submissions
+          </div>
+          <span style="font-size: 0.8125rem; color: var(--text-muted);">Real-time synchronized queue</span>
+        </div>
+
+        <div class="staff-table-wrap">
+          <table class="staff-table">
+            <thead>
+              <tr>
+                <th>Student &amp; Track</th>
+                <th>Task Assignment</th>
+                <th>Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="staff-submissions-tbody">
+              <!-- Populated via JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Student Doubts Queue -->
+      <div class="staff-queue-card">
+        <div class="dash-panel-header">
+          <div class="dash-panel-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            Student Doubts &amp; Technical Inquiries
+          </div>
+          <span class="task-meta-pill" style="background: #ECFDF5; color: #059669;">15-Min Response Guarantee</span>
+        </div>
+
+        <div id="staff-doubts-list">
+          <!-- Populated via JavaScript -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       VIEW 5: ADMIN & INVESTOR METRICS DASHBOARD
+       ========================================================================= -->
+  <main id="view-admin-dashboard" style="display: none;">
+    <div class="container admin-portal-view">
+      <!-- Admin Header -->
+      <div class="staff-header-banner">
+        <div>
+          <div style="font-size: 0.775rem; font-weight: 700; color: var(--purple-600); text-transform: uppercase; margin-bottom: 4px;">
+            Executive &amp; Investor Overview
+          </div>
+          <h2 style="font-size: 1.75rem; font-weight: 800; color: var(--text-primary);">Platform Health &amp; Unit Economics</h2>
+        </div>
+        <div>
+          <span class="task-meta-pill" style="background: #F5F3FF; color: #6D28D9; font-size: 0.875rem;">MoM Growth: +28.6%</span>
+        </div>
+      </div>
+
+      <!-- Top KPI Cards -->
+      <div class="admin-grid-top-kpis">
+        <div class="admin-metric-box">
+          <div class="admin-metric-title">Total Revenue (Gross)</div>
+          <div class="admin-metric-num" id="admin-kpi-revenue">₹14.85 Cr</div>
+          <div class="admin-metric-growth">↑ 32.4% vs last quarter</div>
+        </div>
+
+        <div class="admin-metric-box">
+          <div class="admin-metric-title">Active Students</div>
+          <div class="admin-metric-num" id="admin-kpi-students">4,820</div>
+          <div class="admin-metric-growth">3,450 daily active learners</div>
+        </div>
+
+        <div class="admin-metric-box">
+          <div class="admin-metric-title">Avg Course Completion Rate</div>
+          <div class="admin-metric-num" style="color: var(--emerald-600);" id="admin-kpi-completion">88.4%</div>
+          <div class="admin-metric-growth">vs 8% industry standard</div>
+        </div>
+
+        <div class="admin-metric-box">
+          <div class="admin-metric-title">Extra Permission Revenue</div>
+          <div class="admin-metric-num" id="admin-kpi-perm-rev">₹18.45 L</div>
+          <div class="admin-metric-growth">High-margin auxiliary revenue</div>
+        </div>
+      </div>
+
+      <!-- Charts & Visuals -->
+      <div class="admin-charts-grid">
+        <div class="admin-chart-card">
+          <div class="dash-panel-header">
+            <div class="dash-panel-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+              Gross Revenue vs. Completion Refunds Paid
+            </div>
+            <div style="display: flex; gap: 12px; font-size: 0.775rem;">
+              <span style="display: flex; align-items: center; gap: 4px; color: #2563EB;">● Gross Inflow</span>
+              <span style="display: flex; align-items: center; gap: 4px; color: #10B981;">--- Refunds Disbursed</span>
+            </div>
+          </div>
+          <div id="admin-revenue-chart-svg">
+            <!-- Rendered SVG Chart -->
+          </div>
+        </div>
+
+        <div class="admin-chart-card">
+          <div class="dash-panel-header">
+            <div class="dash-panel-title">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 10 10"/></svg>
+              Refund Pipeline Audits
+            </div>
+          </div>
+          <div style="display: flex; flex-direction: column; gap: 14px;">
+            <div style="background: var(--bg-surface); padding: 14px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.875rem; color: var(--text-secondary);">Refund Eligible Students (100% complete)</span>
+              <strong style="color: var(--emerald-600);" id="admin-kpi-refund-eligible">980</strong>
+            </div>
+            <div style="background: var(--bg-surface); padding: 14px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.875rem; color: var(--text-secondary);">Completed Course Graduates</span>
+              <strong style="color: var(--primary-700);">1,180</strong>
+            </div>
+            <div style="background: var(--bg-surface); padding: 14px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
+              <span style="font-size: 0.875rem; color: var(--text-secondary);">Pending Automated Audits</span>
+              <strong style="color: var(--amber-600);">24</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- =========================================================================
+       MODALS
+       ========================================================================= -->
+
+  <!-- Course Details Modal -->
+  <div id="modal-course-details" class="modal-backdrop">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-course-details-title">Course Details</h3>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-course-details-body">
+        <!-- Populated dynamically via JavaScript with exact refund disclaimer -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline btn-modal-cancel">Close</button>
+        <button class="btn btn-primary" id="btn-enroll-from-modal">Enroll Now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Enrollment Checkout Modal -->
+  <div id="modal-enroll" class="modal-backdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Complete Enrollment</h3>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-enroll-body">
+        <!-- Populated via JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Staff Review & Verify Modal -->
+  <div id="modal-staff-review" class="modal-backdrop">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-header">
+        <h3 class="modal-title">Evaluate Student Submission</h3>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-staff-review-body">
+        <!-- Populated via JavaScript -->
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="btn-staff-reject-sub">Request Revision</button>
+        <button class="btn btn-emerald" id="btn-staff-approve-sub">Approve &amp; Verify Submission</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ask Staff a Doubt Modal -->
+  <div id="modal-ask-doubt" class="modal-backdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Ask Staff a Doubt</h3>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-submit-doubt">
+          <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 16px;">
+            Our engineering &amp; domain staff provides technical resolution within an average of 15 minutes.
+          </p>
+          <div class="form-group">
+            <label class="form-label">Task Reference</label>
+            <input type="text" class="form-input" readonly value="Day 69 — Java Collections &amp; Stream API Practice">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="doubt-question-input">Your Specific Doubt / Error Message *</label>
+            <textarea id="doubt-question-input" class="form-input" rows="4" placeholder="Paste your error message, code snippet, or conceptual question..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            Send Doubt Ticket to Staff Desk
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Purchase Extra Permissions Modal -->
+  <div id="modal-buy-permissions" class="modal-backdrop">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <h3 class="modal-title">Purchase Supplemental Permissions</h3>
+        <button class="modal-close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-purchase-permission">
+          <p style="font-size: 0.875rem; color: var(--text-secondary); margin-bottom: 16px;">
+            Need extra flexibility for upcoming commitments? Purchase additional permission tokens to protect your streak and refund eligibility.
+          </p>
+          <div class="form-group">
+            <label class="form-label" for="perm-purchase-qty">Select Number of Permissions</label>
+            <select id="perm-purchase-qty" class="form-input">
+              <option value="1">1 Extra Permission — ₹999</option>
+              <option value="2">2 Extra Permissions — ₹1,799 (Save 10%)</option>
+              <option value="3">3 Extra Permissions — ₹2,499 (Save 15%)</option>
+            </select>
+          </div>
+          <div style="background: var(--bg-surface); padding: 14px; border-radius: 8px; font-size: 0.775rem; color: var(--text-muted); margin-bottom: 20px;">
+            *Purchased permissions carry the exact same 24-hour extension validity as free allocations and are non-refundable. Terms &amp; Conditions apply.
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">
+            Confirm &amp; Add to Balance
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================================
+       FOOTER
+       ========================================================================= -->
+  <footer class="main-footer">
+    <div class="container">
+      <div class="footer-top-grid">
+        <!-- Brand Info -->
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom: 16px;">
+            <div class="brand-icon-wrap" style="width: 38px; height: 38px;">
+              <svg class="brand-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="width: 20px; height: 20px;">
+                <polyline points="16 18 22 12 16 6"/>
+                <polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+            <div class="brand-text-wrap">
+              <span class="brand-name" style="font-size: 1.2rem;">Commit<span>Code</span></span>
+            </div>
+          </div>
+          <p style="font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+            “Learn. Practice. Stay Consistent. Earn Back.”
+          </p>
+          <p style="font-size: 0.8125rem; color: var(--text-muted);">
+            Empowering multi-disciplinary career seekers through daily practical accountability and completion-based performance refunds.
+          </p>
+        </div>
+
+        <!-- Tech & Non-IT -->
+        <div class="footer-col">
+          <h5>Tech &amp; Professional</h5>
+          <div class="footer-links-list">
+            <a href="#courses" class="footer-link-item">Java Full Stack (₹40,000)</a>
+            <a href="#courses" class="footer-link-item">Python Full Stack (₹35,000)</a>
+            <a href="#courses" class="footer-link-item">AWS Cloud (₹30,000)</a>
+            <a href="#courses" class="footer-link-item">Communication Skills (₹12,000)</a>
+            <a href="#courses" class="footer-link-item">English Speaking (₹10,000)</a>
+            <a href="#courses" class="footer-link-item">Leadership Skills (₹15,000)</a>
+          </div>
+        </div>
+
+        <!-- Math, Business & Design -->
+        <div class="footer-col">
+          <h5>Analytics &amp; Business</h5>
+          <div class="footer-links-list">
+            <a href="#courses" class="footer-link-item">Quantitative Aptitude (₹15,000)</a>
+            <a href="#courses" class="footer-link-item">Data Analytics (₹30,000)</a>
+            <a href="#courses" class="footer-link-item">Power BI (₹20,000)</a>
+            <a href="#courses" class="footer-link-item">Tally Prime + GST (₹18,000)</a>
+            <a href="#courses" class="footer-link-item">UI/UX Design (₹25,000)</a>
+            <a href="#courses" class="footer-link-item">Digital Marketing (₹22,000)</a>
+          </div>
+        </div>
+
+        <!-- 7 Main Learning Groups -->
+        <div class="footer-col">
+          <h5>7 Learning Groups</h5>
+          <div class="footer-links-list">
+            <a href="#courses" class="footer-link-item">1. IT &amp; Technology</a>
+            <a href="#courses" class="footer-link-item">2. Non-IT &amp; Professional</a>
+            <a href="#courses" class="footer-link-item">3. Math &amp; Analytics</a>
+            <a href="#courses" class="footer-link-item">4. Management &amp; Business</a>
+            <a href="#courses" class="footer-link-item">5. Design &amp; Creative</a>
+            <a href="#courses" class="footer-link-item">6. Marketing &amp; Sales</a>
+            <a href="#courses" class="footer-link-item">7. Career &amp; Placement</a>
+          </div>
+        </div>
+
+        <!-- Live Portals -->
+        <div class="footer-col">
+          <h5>Live Dashboards</h5>
+          <div class="footer-links-list">
+            <a href="#" class="footer-link-item" data-action="switch-view" data-target="student-dashboard">Student Dashboard</a>
+            <a href="#" class="footer-link-item" data-action="switch-view" data-target="daily-task">Daily Task Workspace</a>
+            <a href="#" class="footer-link-item" data-action="switch-view" data-target="staff-portal">Staff Review Portal</a>
+            <a href="#" class="footer-link-item" data-action="switch-view" data-target="admin-dashboard">Admin &amp; Metrics</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Legal Compliance Notice -->
+      <div class="footer-legal-notice-box">
+        <strong>Important Terms &amp; Refund Notice:</strong> CommitCode is an educational skills platform. Complete 100% of the defined course requirements and become eligible for a completion refund of up to 50%, subject to the course Refund Policy and Terms &amp; Conditions. Eligibility is subject to course completion requirements and Refund Policy. CommitCode does not offer guaranteed income, investment returns, financial loans, or credit products. Terms &amp; Conditions Apply.
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="footer-bottom-bar">
+        <div>&copy; 2026 CommitCode Technologies Pvt. Ltd. All rights reserved.</div>
+        <div style="display: flex; gap: 20px;">
+          <a href="#" style="color: var(--text-muted); font-size: 0.8125rem;">Terms &amp; Conditions</a>
+          <a href="#" style="color: var(--text-muted); font-size: 0.8125rem;">Refund Policy</a>
+          <a href="#" style="color: var(--text-muted); font-size: 0.8125rem;">Privacy Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
