@@ -65,5 +65,36 @@ for (i=1;i<=d;i++){
 }
 
 
-let number = 12345;
+let numberVinoth = 12345;
+let reverse123 = "";
 
+for (let i = 0; i < String(numberVinoth).length; i++) {
+    reverse123 = String(numberVinoth)[i] + reverse123;
+}
+
+console.log(reverse123);
+
+
+
+let text1 = "javascript";
+let reverse = "";
+
+for (let i = 0; i < text1.length; i++) {
+    reverse = text1[i] + reverse;
+}
+
+console.log(reverse);
+
+
+
+
+let text2 = "javascript";
+let target = "s";
+
+for (let i = 0; i < text2.length; i++) {
+
+    if (text2[i] === target) {
+        console.log("Character Found:", target);
+        break;
+    }
+}

@@ -1,0 +1,44 @@
+ecma script is a standardize spealization that define a language features of js 
+
+
+
+ecma 5    2009
+
+strick mode 
+Jason 
+array methods 
+improve error handling
+
+
+es 6 2015
+
+this is one of biggest js update 
+
+let const
+arrow fun
+block scop
+template liturse 
+defauld parameter 
+rest parameter 
+spret operator 
+destructuring 
+classes
+modules 
+promises
+map set 
+for of
+enhance object 
+
+
+
+
+
+
+
+
+call back function 
+
+it is function that is  passed  as an  another function and excuted later by that function
+
+1.synchoronous function (one after another)
+2.asynchoronous function 
