@@ -42,3 +42,18 @@ it is function that is  passed  as an  another function and excuted later by tha
 
 1.synchoronous function (one after another)
 2.asynchoronous function 
+
+
+
+closure function 
+
+a closure is created inn inner function remember and access variable from its outer function 
+
+
+
+
+
+
+
+antha website epdi irukkanumna aadhar base panni aadhar enter panna antha aadhar link la irukka mobile number ku otp poi login pannanum oru id ku oru hot na full beer na 2 tha limit per day ,antha website la yaru venumnalu antha id ooda histrya check pannikkalam athe mari avanga sarakka book panndrathukku limit already sollitten athukku time declare pannittomna antha time la poi avinga kadaila vangikkuvanga intha id la irukka person mela ethavathu case drugs,drungen drive, drinks pannittu sanda podrathu  intha mari alchachol oriented case vantha antha case solve agura varaikkum drinks a block panni vaikkanum ithukku prombt kudu ithula tamil nadu logo sarakku book pandrathukku booking logo ovoru sarakkukum ovoru photo with light theme la pannanum starting la login panni location choose panni near by shop a recomment panni antha shop la irukka items mattum customerku show pannanum Search by district/city Shop list Address
+Opening/closing information  Product categories Brand information Product cards Price/information section
