@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin & Restriction Console • Unakku Avlotha Limit</title>
+  <meta name="description" content="Enforcement officer console for daily quota monitoring, Canvas analytics, outlet management, and resident restriction controls.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22><rect width=%2248%22 height=%2248%22 rx=%2210%22 fill=%22%230f5a34%22/><path d=%22M21 15 H27 V19 L29 23 V33 H19 V23 L21 19 Z%22 fill=%22white%22/><path d=%22M20 27 L23 30 L28 23%22 stroke=%22%2316a34a%22 stroke-width=%223%22 fill=%22none%22/></svg>">
+  <style>
+    .admin-tab-btn {
+      padding: 0.65rem 1.25rem;
+      font-weight: 700;
+      font-size: 0.88rem;
+      border-radius: 8px;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      background: transparent;
+      border: 1px solid transparent;
+    }
+    .admin-tab-btn.active {
+      background: #0f5a34;
+      color: #ffffff;
+    }
+    .admin-tab-btn:hover:not(.active) {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body style="background:var(--bg-page);">
+  <div id="headerMount"></div>
+
+  <main style="padding:2.5rem 0 4rem;">
+    <div class="container">
+      
+      <!-- Officer Header & Greeting -->
+      <div class="card" style="padding:1.5rem; background:#0f172a; color:#ffffff; border-radius:14px; margin-bottom:1.75rem; border:1px solid #334155;">
+        <div class="flex justify-between items-center flex-wrap gap-3">
+          <div class="flex items-center gap-3">
+            <div style="width:46px; height:46px; background:#0284c7; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.5rem;">
+              🛡️
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h1 style="font-size:1.35rem; font-weight:900; color:#ffffff;">State Enforcement & Monitoring Console</h1>
+                <span class="badge" style="background:#38bdf8; color:#0f172a; font-weight:800;">ADMIN</span>
+              </div>
+              <p style="font-size:0.82rem; color:#94a3b8; margin-top:0.2rem;">
+                Officer: <strong>Dr. K. Rathinavel</strong> • Role: Central Quota & Restrictions Officer
+              </p>
+            </div>
+          </div>
+
+          <div class="flex gap-2">
+            <button class="btn-persona-quick" onclick="UalUI.openPersonaModal()" style="background:#1e293b; color:#ffffff; border-color:#475569;">
+              🎭 Switch Demo Persona
+            </button>
+            <a href="dashboard.html" class="btn-outline" style="color:#ffffff; border-color:#475569; font-size:0.82rem; padding:0.45rem 0.85rem;">
+              Resident View
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- KPI Metrics Row -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3" style="margin-bottom:2rem;">
+        <div class="card" style="padding:1.15rem; background:#ffffff; border-radius:10px; border:1px solid #e2e8f0;">
+          <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700; text-transform:uppercase;">Verified Residents</span>
+          <div style="font-size:1.6rem; font-weight:900; color:#0f5a34; margin-top:0.25rem;" id="kpiResidents">0</div>
+          <span style="font-size:0.7rem; color:#16a34a;">● Aadhaar verified</span>
+        </div>
+
+        <div class="card" style="padding:1.15rem; background:#ffffff; border-radius:10px; border:1px solid #e2e8f0;">
+          <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700; text-transform:uppercase;">Registered Shops</span>
+          <div style="font-size:1.6rem; font-weight:900; color:#0f5a34; margin-top:0.25rem;" id="kpiShops">0</div>
+          <span style="font-size:0.7rem; color:#0284c7;">● Active state outlets</span>
+        </div>
+
+        <div class="card" style="padding:1.15rem; background:#ffffff; border-radius:10px; border:1px solid #e2e8f0;">
+          <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700; text-transform:uppercase;">Today's Tokens</span>
+          <div style="font-size:1.6rem; font-weight:900; color:#0f5a34; margin-top:0.25rem;" id="kpiTokens">0</div>
+          <span style="font-size:0.7rem; color:#d97706;">● Queue passes active</span>
+        </div>
+
+        <div class="card" style="padding:1.15rem; background:#ffffff; border-radius:10px; border:1px solid #e2e8f0;">
+          <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700; text-transform:uppercase;">Active Restrictions</span>
+          <div style="font-size:1.6rem; font-weight:900; color:#dc2626; margin-top:0.25rem;" id="kpiRestrictions">0</div>
+          <span style="font-size:0.7rem; color:#dc2626;">● Statutory holds</span>
+        </div>
+
+        <div class="card" style="padding:1.15rem; background:#ffffff; border-radius:10px; border:1px solid #e2e8f0;">
+          <span style="font-size:0.75rem; color:var(--text-muted); font-weight:700; text-transform:uppercase;">Counter Value</span>
+          <div style="font-size:1.45rem; font-weight:900; color:#0f172a; margin-top:0.25rem;" id="kpiRevenue">₹0</div>
+          <span style="font-size:0.7rem; color:var(--text-muted);">● Total scheduled</span>
+        </div>
+      </div>
+
+      <!-- HTML5 Canvas Visual Charts -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4" style="margin-bottom:2rem;">
+        <div class="card" style="padding:1.5rem; background:#ffffff; border-radius:12px; border:1px solid #e2e8f0;">
+          <h3 style="font-size:1rem; font-weight:800; color:#0f5a34; margin-bottom:0.25rem;">
+            Token Volume by Category
+          </h3>
+          <p style="font-size:0.78rem; color:var(--text-secondary); margin-bottom:1rem;">
+            Comparison of HOT Spirits (Cap 1/day) vs NON-HOT Milds (Cap 2/day)
+          </p>
+          <canvas id="chartTokensByCategory" width="420" height="200" style="width:100%; height:200px;"></canvas>
+        </div>
+
+        <div class="card" style="padding:1.5rem; background:#ffffff; border-radius:12px; border:1px solid #e2e8f0;">
+          <h3 style="font-size:1rem; font-weight:800; color:#0f5a34; margin-bottom:0.25rem;">
+            Outlet Booking Density
+          </h3>
+          <p style="font-size:0.78rem; color:var(--text-secondary); margin-bottom:1rem;">
+            Token reservations across key Chennai retail and Elite store locations
+          </p>
+          <canvas id="chartBookingsByOutlet" width="420" height="200" style="width:100%; height:200px;"></canvas>
+        </div>
+      </div>
+
+      <!-- Administration Navigation Tabs -->
+      <div class="flex gap-2" style="margin-bottom:1.25rem; border-bottom:1px solid #e2e8f0; padding-bottom:0.5rem;">
+        <button class="admin-tab-btn active" data-target="secRestrictions">
+          🚫 Customer Statutory Restrictions
+        </button>
+        <button class="admin-tab-btn" data-target="secShops">
+          🏪 Retail Outlets Operations
+        </button>
+        <button class="admin-tab-btn" data-target="secInventory">
+          📦 Inventory & Stock Adjustments
+        </button>
+      </div>
+
+      <!-- Section 1: Customer Restrictions Management -->
+      <section id="secRestrictions" class="admin-section">
+        <div class="card" style="background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; overflow:hidden;">
+          <div style="padding:1.25rem 1.5rem; background:#f8fafc; border-bottom:1px solid #e2e8f0;">
+            <h3 style="font-size:1.05rem; font-weight:800; color:#0f5a34;">Resident Daily Limits & Statutory Restrictions</h3>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:0.2rem;">
+              Enforce temporary booking suspensions for drink-and-drive citations or public order cases.
+            </p>
+          </div>
+
+          <div style="overflow-x:auto;">
+            <table style="width:100%; border-collapse:collapse;">
+              <thead style="background:#f8fafc; font-size:0.75rem; text-transform:uppercase; color:var(--text-muted); border-bottom:1px solid #e2e8f0;">
+                <tr>
+                  <th style="padding:0.75rem 1rem; text-align:left;">Resident Name</th>
+                  <th style="padding:0.75rem 1rem; text-align:left;">Identity</th>
+                  <th style="padding:0.75rem 1rem; text-align:left;">Daily Usage</th>
+                  <th style="padding:0.75rem 1rem; text-align:left;">Restriction Status</th>
+                  <th style="padding:0.75rem 1rem; text-align:right;">Enforcement Action</th>
+                </tr>
+              </thead>
+              <tbody id="customerRestrictionsTbody">
+                <!-- Populated by admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Shop Operations Management -->
+      <section id="secShops" class="admin-section hidden">
+        <div class="card" style="background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; overflow:hidden;">
+          <div style="padding:1.25rem 1.5rem; background:#f8fafc; border-bottom:1px solid #e2e8f0;">
+            <h3 style="font-size:1.05rem; font-weight:800; color:#0f5a34;">TASMAC Retail Outlets Operations</h3>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:0.2rem;">
+              Toggle shop open/closed status to manage localized congestion and operating hours.
+            </p>
+          </div>
+
+          <div style="overflow-x:auto;">
+            <table style="width:100%; border-collapse:collapse;">
+              <thead style="background:#f8fafc; font-size:0.75rem; text-transform:uppercase; color:var(--text-muted); border-bottom:1px solid #e2e8f0;">
+                <tr>
+                  <th style="padding:0.75rem 1rem; text-align:left;">Shop ID</th>
+                  <th style="padding:0.75rem 1rem; text-align:left;">Outlet Name</th>
+                  <th style="padding:0.75rem 1rem; text-align:left;">District & Locality</th>
+                  <th style="padding:0.75rem 1rem; text-align:left;">Status</th>
+                  <th style="padding:0.75rem 1rem; text-align:right;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="shopManagementTbody">
+                <!-- Populated by admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Inventory Control -->
+      <section id="secInventory" class="admin-section hidden">
+        <div class="card" style="background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; overflow:hidden;">
+          <div style="padding:1.25rem 1.5rem; background:#f8fafc; border-bottom:1px solid #e2e8f0;">
+            <h3 style="font-size:1.05rem; font-weight:800; color:#0f5a34;">Inventory Allocation & Stock Replenishment</h3>
+            <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:0.2rem;">
+              Adjust unit availability for outlet <strong>#101 – Anna Nagar</strong>.
+            </p>
+          </div>
+
+          <div style="overflow-x:auto;">
+            <table style="width:100%; border-collapse:collapse;">
+              <thead style="background:#f8fafc; font-size:0.75rem; text-transform:uppercase; color:var(--text-muted); border-bottom:1px solid #e2e8f0;">
+                <tr>
+                  <th style="padding:0.75rem 1rem; text-align:left;">Product ID</th>
+                  <th style="padding:0.75rem 1rem; text-align:left;">Brand & Name</th>
+                  <th style="padding:0.75rem 1rem; text-align:left;">MRP (₹)</th>
+                  <th style="padding:0.75rem 1rem; text-align:left;">Outlet Units</th>
+                  <th style="padding:0.75rem 1rem; text-align:right;">Stock Adjustment</th>
+                </tr>
+              </thead>
+              <tbody id="inventoryTbody">
+                <!-- Populated by admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <div id="footerMount"></div>
+
+  <!-- Scripts -->
+  <script src="js/qrcode.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

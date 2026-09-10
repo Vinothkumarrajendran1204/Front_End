@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Products Catalog • Unakku Avlotha Limit</title>
+  <meta name="description" content="View verified inventory for selected TASMAC outlet with strict HOT/NON-HOT daily quota enforcement.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22><rect width=%2248%22 height=%2248%22 rx=%2210%22 fill=%22%230f5a34%22/><path d=%22M21 15 H27 V19 L29 23 V33 H19 V23 L21 19 Z%22 fill=%22white%22/><path d=%22M20 27 L23 30 L28 23%22 stroke=%22%2316a34a%22 stroke-width=%223%22 fill=%22none%22/></svg>">
+  <style>
+    .cat-toggle-btn {
+      flex: 1;
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      border: 2px solid #e2e8f0;
+      background: #ffffff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+    .active-cat-hot {
+      border-color: #b45309 !important;
+      background: #fffbeb !important;
+      box-shadow: 0 4px 12px rgba(180, 83, 9, 0.15);
+    }
+    .active-cat-nonhot {
+      border-color: #0f5a34 !important;
+      background: #f0fdf4 !important;
+      box-shadow: 0 4px 12px rgba(15, 90, 52, 0.15);
+    }
+  </style>
+</head>
+<body style="background:var(--bg-page);">
+  <div id="headerMount"></div>
+
+  <main style="padding:2.5rem 0 4rem;">
+    <div class="container">
+      
+      <!-- Selected Shop Header Banner -->
+      <div class="card" id="selectedShopBanner" style="padding:1.5rem; background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; margin-bottom:1.5rem; box-shadow:var(--shadow-sm);">
+        <!-- Populated by products.js -->
+      </div>
+
+      <!-- User Quota Status Strip -->
+      <div id="userQuotaBanner"></div>
+
+      <!-- Category Selection Strip (Strict Segregation) -->
+      <div style="margin-bottom:1.5rem;">
+        <div class="flex flex-col md:flex-row gap-3">
+          <!-- HOT Spirits Toggle Button -->
+          <button id="catBtnHot" class="cat-toggle-btn active-cat-hot">
+            <span style="font-size:2rem;">🔥</span>
+            <div>
+              <div class="flex items-center gap-2">
+                <strong style="font-size:1.1rem; color:#b45309;">HOT Spirits</strong>
+                <span class="badge badge-warning" style="font-size:0.7rem;">Cap: 1 Unit/Day</span>
+              </div>
+              <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:0.2rem;">
+                Whisky, Brandy, Rum, Vodka & IMFL Liquor
+              </p>
+            </div>
+          </button>
+
+          <!-- NON-HOT Mild Toggle Button -->
+          <button id="catBtnNonHot" class="cat-toggle-btn">
+            <span style="font-size:2rem;">🍺</span>
+            <div>
+              <div class="flex items-center gap-2">
+                <strong style="font-size:1.1rem; color:#0f5a34;">NON-HOT Mild Spirits</strong>
+                <span class="badge badge-success" style="font-size:0.7rem;">Cap: 2 Units/Day</span>
+              </div>
+              <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:0.2rem;">
+                Beer, Lager, Draught & Mild Wine
+              </p>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Search & Subcategory Filter Strip -->
+      <div class="card" style="padding:1.25rem; background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; margin-bottom:1.75rem;">
+        <div class="flex flex-col md:flex-row justify-between gap-3 items-center">
+          <div class="flex flex-wrap gap-2 items-center" id="subcategoryPills">
+            <!-- Populated dynamically based on HOT / NON-HOT -->
+          </div>
+
+          <div style="min-width:280px; width:100%; max-width:340px;">
+            <input 
+              type="text" 
+              id="productSearchInput" 
+              placeholder="Search by brand or title..."
+              style="width:100%; padding:0.6rem 0.85rem; border-radius:8px; border:1.5px solid #cbd5e1; font-size:0.85rem;"
+            />
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Cards Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="productsGrid">
+        <!-- Rendered by products.js -->
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footerMount"></div>
+
+  <!-- Scripts -->
+  <script src="js/qrcode.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/products.js"></script>
+</body>
+</html>

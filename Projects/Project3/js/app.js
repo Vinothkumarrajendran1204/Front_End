@@ -10,9 +10,22 @@ class TasmacApp {
     this.currentBookingDraft = null;
     this.currentLoginDraft = null;
     this.currentAdminTab = "bookings";
+    this.currentFreqTab = "noAlcohol";
+    this.currentAnatomyNode = "brain";
   }
 
   init() {
+    // Check URL query param or hash for deep linking
+    const urlParams = new URLSearchParams(window.location.search);
+    const viewParam = urlParams.get("view") || window.location.hash.replace("#", "");
+    const shopIdParam = urlParams.get("shopId");
+    if (viewParam && ["home", "shops", "shop-detail", "limits", "awareness", "my-bookings", "history", "admin"].includes(viewParam)) {
+      tasmacStore.state.activeView = viewParam;
+      if (shopIdParam) {
+        tasmacStore.state.selectedShopId = shopIdParam;
+      }
+    }
+
     // Listen to store updates
     tasmacStore.subscribe(state => this.render(state));
 
@@ -29,6 +42,7 @@ class TasmacApp {
     console.log("TASMAC Smart Portal initialized successfully.");
   }
 
+
   render(state) {
     const appEl = document.getElementById("app");
     if (!appEl) return;
@@ -41,8 +55,10 @@ class TasmacApp {
         contentHtml = `
           ${TasmacComponents.renderHero(state)}
           ${TasmacComponents.renderUserDashboard(state)}
+          ${TasmacComponents.renderAlcoholAwarenessView(state)}
         `;
         break;
+
 
       case "shops":
         contentHtml = TasmacComponents.renderShopListView(state);
@@ -54,6 +70,10 @@ class TasmacApp {
 
       case "limits":
         contentHtml = TasmacComponents.renderMyLimitsView(state);
+        break;
+
+      case "awareness":
+        contentHtml = TasmacComponents.renderAlcoholAwarenessView(state);
         break;
 
       case "my-bookings":
@@ -1084,6 +1104,170 @@ class TasmacApp {
     this.closeAllModals();
     this.showToast(`Citizen XXXX-XXXX-${aadhaar.slice(-4)} is now legally restricted.`, "warning");
     this.switchAdminTab("restrictions");
+  }
+
+  // ================= ALCOHOL AWARENESS HANDLERS =================
+
+  switchFrequencyTab(tabKey) {
+    this.currentFreqTab = tabKey;
+    this.render(tasmacStore.getState());
+  }
+
+  selectAnatomyPoint(nodeId) {
+    this.currentAnatomyNode = nodeId;
+    const data = window.TASMAC_AWARENESS_DATA?.bodyMindVisual || {};
+    const allNodes = [...(data.bodyPoints || []), ...(data.mindPoints || [])];
+    const node = allNodes.find(n => n.id === nodeId);
+
+    // Update active classes on buttons
+    document.querySelectorAll(".bodymind-node-btn").forEach(btn => {
+      const isTarget = btn.getAttribute("onclick")?.includes(`'${nodeId}'`);
+      if (isTarget) btn.classList.add("active");
+      else btn.classList.remove("active");
+    });
+
+    // Update active classes on pulse points
+    document.querySelectorAll(".anatomy-pulse-point").forEach(pt => {
+      const isTarget = pt.getAttribute("onclick")?.includes(`'${nodeId}'`);
+      if (isTarget) pt.classList.add("active");
+      else pt.classList.remove("active");
+    });
+
+    const panel = document.getElementById("anatomyDetailPanel");
+    if (panel && node) {
+      panel.innerHTML = `
+        <div class="bodymind-detail-header">
+          <div class="bodymind-detail-title">
+            <span>${node.icon}</span>
+            <span>${node.label} — ${node.summary}</span>
+          </div>
+          <span class="bodymind-detail-tag">${node.tag}</span>
+        </div>
+        <p class="bodymind-detail-body">
+          ${node.details}
+        </p>
+      `;
+    }
+  }
+
+  openLearnMoreModal() {
+    const modalHtml = `
+      <div class="modal-overlay" onclick="if(event.target === this) tasmacApp.closeAllModals()">
+        <div class="modal-dialog wide">
+          <div class="modal-header" style="background:#f0fdf4; border-bottom:1px solid #bbf7d0;">
+            <h3 class="modal-title" style="color:#064e3b;">
+              <span>📖 Health Guide: Alcohol & Your Wellbeing</span>
+            </h3>
+            <button class="modal-close-btn" onclick="tasmacApp.closeAllModals()">✕</button>
+          </div>
+          <div class="modal-body">
+            <div style="margin-bottom:1.5rem;">
+              <h4 style="font-size:1.1rem; font-weight:800; color:#0f5a34; margin-bottom:0.4rem;">
+                How Alcohol Impacts the Body & Brain
+              </h4>
+              <p style="font-size:0.88rem; color:var(--text-secondary); line-height:1.6;">
+                When alcohol is ingested, it is absorbed directly through the stomach and small intestine into the bloodstream. Within minutes, it crosses the blood-brain barrier, altering the balance of essential neurotransmitters such as GABA (inhibitory) and glutamate (excitatory).
+              </p>
+            </div>
+
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; margin-bottom:1.5rem;" class="rules-split-grid">
+              <div style="background:var(--bg-muted); border-radius:var(--radius-md); padding:1rem;">
+                <div style="font-weight:800; font-size:0.9rem; color:#b45309; margin-bottom:0.3rem;">
+                  🔬 Acetaldehyde Toxicity
+                </div>
+                <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.5;">
+                  The liver converts ethanol into acetaldehyde—a toxic compound and recognized carcinogen. Acetaldehyde causes cellular inflammation, facial flushing, nausea, and tissue damage before further oxidation.
+                </p>
+              </div>
+
+              <div style="background:var(--bg-muted); border-radius:var(--radius-md); padding:1rem;">
+                <div style="font-weight:800; font-size:0.9rem; color:#15803d; margin-bottom:0.3rem;">
+                  🛡️ The Myth of "High Tolerance"
+                </div>
+                <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.5;">
+                  Being able to "hold your liquor" does not protect organs. Rather, tolerance indicates cellular and neurological adaptation, which often leads to higher consumption and increased risk of organ injury and dependency.
+                </p>
+              </div>
+            </div>
+
+            <div style="background:#fef3c7; border:1px solid #fde68a; border-radius:var(--radius-md); padding:1rem; margin-bottom:1.5rem;">
+              <div style="font-weight:800; font-size:0.9rem; color:#92400e; margin-bottom:0.3rem;">
+                💡 Practical Steps for Health Preservation
+              </div>
+              <ul style="font-size:0.82rem; color:#78350f; line-height:1.6; padding-left:1.2rem;">
+                <li>Plan alcohol-free days during the week to allow hepatic regeneration.</li>
+                <li>Never consume alcohol when driving, operating machinery, or pregnant.</li>
+                <li>Stay well hydrated with water before and after any consumption.</li>
+                <li>Seek immediate support if drinking begins to affect work, relationships, or mental health.</li>
+              </ul>
+            </div>
+
+            <div style="display:flex; justify-content:flex-end; gap:0.75rem;">
+              <button class="btn-primary" onclick="tasmacApp.closeAllModals(); tasmacApp.openHealthResourcesModal();">
+                View Health Helplines
+              </button>
+              <button class="btn-filter-action" onclick="tasmacApp.closeAllModals()">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.getElementById("modalContainer").innerHTML = modalHtml;
+  }
+
+  openHealthResourcesModal() {
+    const resources = window.TASMAC_AWARENESS_DATA?.healthResources || [];
+
+    const modalHtml = `
+      <div class="modal-overlay" onclick="if(event.target === this) tasmacApp.closeAllModals()">
+        <div class="modal-dialog wide">
+          <div class="modal-header" style="background:#f0fdf4; border-bottom:1px solid #bbf7d0;">
+            <h3 class="modal-title" style="color:#064e3b;">
+              <span>🏥 Tamil Nadu & National Health Resources</span>
+            </h3>
+            <button class="modal-close-btn" onclick="tasmacApp.closeAllModals()">✕</button>
+          </div>
+          <div class="modal-body">
+            <p style="font-size:0.88rem; color:var(--text-secondary); margin-bottom:1.25rem;">
+              Confidential, professional support for alcohol counseling, de-addiction, and family guidance is available 24/7.
+            </p>
+
+            <div style="display:flex; flex-direction:column; gap:1rem; margin-bottom:1.5rem;">
+              ${resources.map(res => `
+                <div style="background:var(--bg-muted); border:1px solid var(--border-light); border-radius:var(--radius-md); padding:1rem 1.25rem;">
+                  <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:0.3rem; flex-wrap:wrap; gap:0.5rem;">
+                    <div>
+                      <div style="font-weight:800; font-size:0.95rem; color:var(--text-primary);">${res.name}</div>
+                      <span class="status-indicator-pill status-active" style="font-size:0.72rem;">${res.type}</span>
+                    </div>
+                    <div style="text-align:right;">
+                      <div style="font-size:1.05rem; font-weight:800; color:var(--primary); font-family:monospace;">📞 ${res.phone}</div>
+                      <span style="font-size:0.75rem; color:var(--text-muted);">${res.hours}</span>
+                    </div>
+                  </div>
+                  <p style="font-size:0.82rem; color:var(--text-secondary); margin-top:0.4rem; line-height:1.5;">
+                    ${res.description}
+                  </p>
+                </div>
+              `).join('')}
+            </div>
+
+            <div style="background:#fee2e2; border:1px solid #fecaca; border-radius:var(--radius-md); padding:0.75rem 1rem; font-size:0.8rem; color:#991b1b; display:flex; align-items:center; gap:0.5rem;">
+              <span>🚨</span>
+              <span><strong>Medical Emergency:</strong> If someone is unresponsive, choking, or having seizures due to acute intoxication, call <strong>108 (Ambulance)</strong> or <strong>112 (Police)</strong> immediately.</span>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn-filter-action" onclick="tasmacApp.closeAllModals()">Close</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.getElementById("modalContainer").innerHTML = modalHtml;
   }
 }
 

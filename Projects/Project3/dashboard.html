@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resident Dashboard • Unakku Avlotha Limit</title>
+  <meta name="description" content="Manage daily alcohol quotas, active collection tokens, and nearby TASMAC shops.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22><rect width=%2248%22 height=%2248%22 rx=%2210%22 fill=%22%230f5a34%22/><path d=%22M21 15 H27 V19 L29 23 V33 H19 V23 L21 19 Z%22 fill=%22white%22/><path d=%22M20 27 L23 30 L28 23%22 stroke=%22%2316a34a%22 stroke-width=%223%22 fill=%22none%22/></svg>">
+</head>
+<body style="background:var(--bg-page);">
+  <div id="headerMount"></div>
+
+  <main style="padding:2.5rem 0 3.5rem;">
+    <div class="container">
+      
+      <!-- Resident Profile Hero Bar -->
+      <div class="card" style="padding:1.5rem; background:#ffffff; border-radius:14px; border:1px solid #e2e8f0; margin-bottom:1.5rem; box-shadow:var(--shadow-sm);">
+        <div class="flex justify-between items-center flex-wrap gap-3">
+          <div class="flex items-center gap-3">
+            <div class="user-pill-avatar" style="width:48px; height:48px; font-size:1.3rem;">
+              👤
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <h1 style="font-size:1.35rem; font-weight:900; color:#0f5a34;" id="dashCustName">Loading Resident...</h1>
+                <span class="mono-text badge badge-info" id="dashCustId">TN-DEMO-1234</span>
+              </div>
+              <p style="font-size:0.82rem; color:var(--text-secondary); margin-top:0.15rem;">
+                Registered Mobile: <strong id="dashCustPhone">******4521</strong> • Location: <span id="dashCustLocation">Chennai District</span>
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button class="btn-persona-quick" onclick="UalUI.openPersonaModal()" style="padding:0.45rem 0.85rem;">
+              🎭 Switch Demo Persona
+            </button>
+            <a href="booking.html" class="btn-primary" style="font-size:0.85rem; padding:0.5rem 1.15rem;">
+              + Book New Token
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Daily Limits Meter & Restriction Card -->
+      <div id="limitMetersContainer" style="margin-bottom:1.75rem;"></div>
+
+      <!-- Active Booking / QR Token Card -->
+      <div style="margin-bottom:2.25rem;">
+        <div class="flex justify-between items-center" style="margin-bottom:0.75rem;">
+          <h2 style="font-size:1.15rem; font-weight:800; color:#0f5a34;">Current Token Reservation</h2>
+          <a href="history.html" style="font-size:0.82rem; color:#0f5a34; font-weight:700; text-decoration:underline;">
+            View All Token History →
+          </a>
+        </div>
+        <div id="activeBookingContainer"></div>
+      </div>
+
+      <!-- Quick Action Navigation Tiles -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3" style="margin-bottom:2.5rem;">
+        <a href="shops.html" class="card" style="padding:1.25rem; text-align:center; background:#ffffff; border:1px solid #e2e8f0; border-radius:10px; transition:transform 0.15s ease;">
+          <div style="font-size:1.8rem; margin-bottom:0.35rem;">🏪</div>
+          <strong style="font-size:0.9rem; color:#0f5a34; display:block;">Nearby Outlets</strong>
+          <span style="font-size:0.75rem; color:var(--text-muted);">Stock & operating hours</span>
+        </a>
+
+        <a href="products.html" class="card" style="padding:1.25rem; text-align:center; background:#ffffff; border:1px solid #e2e8f0; border-radius:10px; transition:transform 0.15s ease;">
+          <div style="font-size:1.8rem; margin-bottom:0.35rem;">📦</div>
+          <strong style="font-size:0.9rem; color:#0f5a34; display:block;">Shop Catalog</strong>
+          <span style="font-size:0.75rem; color:var(--text-muted);">HOT & NON-HOT pricing</span>
+        </a>
+
+        <a href="history.html" class="card" style="padding:1.25rem; text-align:center; background:#ffffff; border:1px solid #e2e8f0; border-radius:10px; transition:transform 0.15s ease;">
+          <div style="font-size:1.8rem; margin-bottom:0.35rem;">📜</div>
+          <strong style="font-size:0.9rem; color:#0f5a34; display:block;">Booking History</strong>
+          <span style="font-size:0.75rem; color:var(--text-muted);">Past and active passes</span>
+        </a>
+
+        <a href="awareness.html" class="card" style="padding:1.25rem; text-align:center; background:#ffffff; border:1px solid #e2e8f0; border-radius:10px; transition:transform 0.15s ease;">
+          <div style="font-size:1.8rem; margin-bottom:0.35rem;">🧠</div>
+          <strong style="font-size:0.9rem; color:#b45309; display:block;">Know the Effects</strong>
+          <span style="font-size:0.75rem; color:var(--text-muted);">Body & mind visualizer</span>
+        </a>
+      </div>
+
+      <!-- Recommended Nearby Outlets -->
+      <div style="margin-bottom:2rem;">
+        <div class="flex justify-between items-center" style="margin-bottom:0.75rem;">
+          <h2 style="font-size:1.15rem; font-weight:800; color:#0f5a34;">Recommended Nearby Outlets</h2>
+          <a href="shops.html" style="font-size:0.82rem; color:#0f5a34; font-weight:700; text-decoration:underline;">
+            Explore All Shops →
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3" id="dashNearbyShops"></div>
+      </div>
+
+      <!-- Health First Banner -->
+      <div class="health-first-banner">
+        <div class="flex items-center gap-3">
+          <span style="font-size:2.2rem;">🌱</span>
+          <div>
+            <h3 style="font-size:1.1rem; font-weight:900; color:#0f5a34;">Your Health Comes First</h3>
+            <p style="font-size:0.82rem; color:var(--text-secondary); line-height:1.45;">
+              Responsible choices protect your liver, cardiovascular system, cognitive sharpness, and family wellbeing.
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-2">
+          <a href="awareness.html" class="btn-primary" style="font-size:0.82rem; padding:0.5rem 1rem;">
+            Learn More
+          </a>
+          <button class="btn-outline" onclick="openHealthResourcesModal()" style="font-size:0.82rem; padding:0.5rem 1rem;">
+            Helplines (14416)
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footerMount"></div>
+
+  <!-- Scripts -->
+  <script src="js/qrcode.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/dashboard.js"></script>
+  <script src="js/awareness.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Bookings & Pass Ledger • Unakku Avlotha Limit</title>
+  <meta name="description" content="View verified collection history, past and active tokens, and QR pickup passes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22><rect width=%2248%22 height=%2248%22 rx=%2210%22 fill=%22%230f5a34%22/><path d=%22M21 15 H27 V19 L29 23 V33 H19 V23 L21 19 Z%22 fill=%22white%22/><path d=%22M20 27 L23 30 L28 23%22 stroke=%22%2316a34a%22 stroke-width=%223%22 fill=%22none%22/></svg>">
+</head>
+<body style="background:var(--bg-page);">
+  <div id="headerMount"></div>
+
+  <main style="padding:2.5rem 0 4rem;">
+    <div class="container">
+      
+      <!-- Title & Action Row -->
+      <div class="flex justify-between items-end flex-wrap gap-3" style="margin-bottom:1.75rem;">
+        <div>
+          <span class="badge badge-success" style="margin-bottom:0.35rem;">Customer Activity Ledger</span>
+          <h1 style="font-size:1.85rem; font-weight:900; color:#0f5a34;">My Token Bookings</h1>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-top:0.25rem;">
+            Private, encrypted ledger of your collection tokens, scannable QR passes, and quota reservations.
+          </p>
+        </div>
+        <div class="flex items-center gap-3">
+          <span id="totalBookingsCount" class="badge badge-info" style="font-size:0.85rem; padding:0.4rem 0.8rem;">
+            Loading...
+          </span>
+          <a href="booking.html" class="btn-primary" style="font-size:0.85rem; padding:0.5rem 1.15rem;">
+            + Book New Token
+          </a>
+        </div>
+      </div>
+
+      <!-- Filters Strip -->
+      <div class="card" style="padding:1.25rem 1.5rem; background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; margin-bottom:1.75rem;">
+        <div class="flex flex-col md:flex-row justify-between gap-3 items-center">
+          <div class="flex flex-wrap gap-2 items-center">
+            <span style="font-size:0.78rem; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Timeframe:</span>
+            <button class="filter-chip time-filter-chip active" data-time="all">All Bookings</button>
+            <button class="filter-chip time-filter-chip" data-time="today">📅 Today</button>
+            <button class="filter-chip time-filter-chip" data-time="week">🗓️ This Week</button>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <label style="font-size:0.8rem; font-weight:700; color:var(--text-secondary); white-space:nowrap;">Status:</label>
+            <select id="historyStatusFilter" style="padding:0.45rem 0.85rem; border-radius:8px; border:1.5px solid #cbd5e1; font-size:0.85rem; font-weight:600;">
+              <option value="all">All Statuses</option>
+              <option value="Confirmed">Confirmed</option>
+              <option value="Completed">Completed</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ledger Table Container -->
+      <div id="historyListContainer">
+        <!-- Rendered by history.js -->
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footerMount"></div>
+
+  <!-- Scripts -->
+  <script src="js/qrcode.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/history.js"></script>
+</body>
+</html>

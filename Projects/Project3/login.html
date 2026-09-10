@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login & Verification • Unakku Avlotha Limit</title>
+  <meta name="description" content="Resident authentication via mock Aadhaar and OTP verification.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22><rect width=%2248%22 height=%2248%22 rx=%2210%22 fill=%22%230f5a34%22/><path d=%22M21 15 H27 V19 L29 23 V33 H19 V23 L21 19 Z%22 fill=%22white%22/><path d=%22M20 27 L23 30 L28 23%22 stroke=%22%2316a34a%22 stroke-width=%223%22 fill=%22none%22/></svg>">
+</head>
+<body style="background:var(--bg-page);">
+  <div id="headerMount"></div>
+
+  <main style="padding:3.5rem 0;">
+    <div class="container" style="max-width:560px;">
+      <div class="card" style="padding:2.25rem; background:#ffffff; border-radius:16px; box-shadow:var(--shadow-lg); border:1px solid #e2e8f0;">
+        
+        <!-- Step 1: Aadhaar Input -->
+        <div id="aadhaarStep">
+          <div style="text-align:center; margin-bottom:1.75rem;">
+            <div class="ual-logo-mark" style="margin:0 auto 0.75rem;">
+              <svg viewBox="0 0 48 48" width="48" height="48" fill="none">
+                <rect x="4" y="6" width="40" height="36" rx="8" fill="#0f5a34" stroke="#d97706" stroke-width="2"/>
+                <circle cx="4" cy="24" r="4" fill="#ffffff"/>
+                <circle cx="44" cy="24" r="4" fill="#ffffff"/>
+                <path d="M21 15 H27 V19 L29 23 V33 H19 V23 L21 19 Z" fill="#ffffff"/>
+                <path d="M20 27 L23 30 L28 23" stroke="#16a34a" stroke-width="2.5"/>
+              </svg>
+            </div>
+            <h2 style="font-size:1.5rem; font-weight:900; color:#0f5a34;">Resident Verification</h2>
+            <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:0.25rem;">
+              Enter your 12-digit mock Aadhaar number to manage daily limits.
+            </p>
+          </div>
+
+          <form id="aadhaarForm">
+            <div style="margin-bottom:1.25rem;">
+              <label style="display:block; font-size:0.82rem; font-weight:700; color:var(--text-primary); margin-bottom:0.4rem;">
+                Aadhaar Number (12 Digits)
+              </label>
+              <input 
+                type="text" 
+                id="aadhaarInput" 
+                placeholder="2345 6789 0123" 
+                maxlength="14"
+                style="width:100%; padding:0.85rem 1rem; font-size:1.15rem; font-weight:700; letter-spacing:0.1em; border:1.5px solid #cbd5e1; border-radius:10px; font-family:monospace; color:#0f172a;"
+                required
+                autocomplete="off"
+              />
+              <span style="font-size:0.75rem; color:var(--text-muted); margin-top:0.35rem; display:block;">
+                🔒 Mock simulation: Real Aadhaar numbers are never transmitted or stored.
+              </span>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width:100%; padding:0.85rem; font-size:0.95rem; font-weight:800;">
+              Verify with Mock OTP →
+            </button>
+          </form>
+
+          <!-- Quick Test Demo Personas Box -->
+          <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px dashed #e2e8f0;">
+            <div class="flex justify-between items-center" style="margin-bottom:0.75rem;">
+              <span style="font-size:0.8rem; font-weight:800; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.04em;">
+                ⚡ 1-Click Test Personas
+              </span>
+              <span class="badge badge-warning" style="font-size:0.68rem;">Demo Presets</span>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <button class="persona-row" onclick="fillPersona('2345 6789 0123')">
+                <div>
+                  <strong>S. Murugan (Clean Account)</strong>
+                  <div style="font-size:0.75rem; color:var(--text-secondary);">🔥 HOT: 0/1 | 🍺 NON-HOT: 0/2 (Eligible)</div>
+                </div>
+                <span class="badge badge-success">0/1 Used</span>
+              </button>
+
+              <button class="persona-row" onclick="fillPersona('3456 7890 1234')">
+                <div>
+                  <strong>K. Anand (HOT Reached)</strong>
+                  <div style="font-size:0.75rem; color:var(--text-secondary);">🔥 HOT: 1/1 (Reached) | 🍺 NON-HOT: 1/2</div>
+                </div>
+                <span class="badge badge-warning">HOT Reached</span>
+              </button>
+
+              <button class="persona-row" onclick="fillPersona('4567 8901 2345')">
+                <div>
+                  <strong>M. Vijay (All Limits Exhausted)</strong>
+                  <div style="font-size:0.75rem; color:var(--text-secondary);">🔥 HOT: 1/1 | 🍺 NON-HOT: 2/2 (Booking Locked)</div>
+                </div>
+                <span class="badge badge-danger">Exhausted</span>
+              </button>
+
+              <button class="persona-row restricted" onclick="fillPersona('9999 8888 7777')">
+                <div>
+                  <strong style="color:#dc2626;">R. Karthik (Restricted)</strong>
+                  <div style="font-size:0.75rem; color:#dc2626;">Drink-and-drive violation notice (Booking Disabled)</div>
+                </div>
+                <span class="badge badge-danger">Restricted</span>
+              </button>
+            </div>
+          </div>
+
+          <div style="text-align:center; margin-top:1.5rem;">
+            <a href="#" id="toggleAdminLogin" style="font-size:0.8rem; color:#0f5a34; font-weight:700; text-decoration:underline;">
+              Officer / Administrator Portal Login (PIN: 8899)
+            </a>
+          </div>
+        </div>
+
+        <!-- Step 2: OTP Verification -->
+        <div id="otpStep" class="hidden">
+          <div style="text-align:center; margin-bottom:1.75rem;">
+            <div style="font-size:2.5rem; margin-bottom:0.5rem;">📲</div>
+            <h2 style="font-size:1.4rem; font-weight:900; color:#0f5a34;">Enter 6-Digit OTP</h2>
+            <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:0.25rem;">
+              Mock OTP has been sent to registered mobile <strong id="otpPhoneMasked">******4521</strong>.
+            </p>
+            <div style="margin-top:0.5rem; display:inline-block; background:#f0fdf4; border:1px solid #bbf7d0; color:#0f5a34; padding:0.25rem 0.75rem; border-radius:6px; font-size:0.8rem; font-weight:700;">
+              Demo OTP: <strong>123456</strong>
+            </div>
+          </div>
+
+          <form id="otpForm">
+            <div class="flex justify-center gap-2" style="margin-bottom:1.5rem;">
+              <input type="text" maxlength="1" class="otp-digit" style="width:48px; height:52px; text-align:center; font-size:1.3rem; font-weight:800; border:2px solid #cbd5e1; border-radius:8px;" />
+              <input type="text" maxlength="1" class="otp-digit" style="width:48px; height:52px; text-align:center; font-size:1.3rem; font-weight:800; border:2px solid #cbd5e1; border-radius:8px;" />
+              <input type="text" maxlength="1" class="otp-digit" style="width:48px; height:52px; text-align:center; font-size:1.3rem; font-weight:800; border:2px solid #cbd5e1; border-radius:8px;" />
+              <input type="text" maxlength="1" class="otp-digit" style="width:48px; height:52px; text-align:center; font-size:1.3rem; font-weight:800; border:2px solid #cbd5e1; border-radius:8px;" />
+              <input type="text" maxlength="1" class="otp-digit" style="width:48px; height:52px; text-align:center; font-size:1.3rem; font-weight:800; border:2px solid #cbd5e1; border-radius:8px;" />
+              <input type="text" maxlength="1" class="otp-digit" style="width:48px; height:52px; text-align:center; font-size:1.3rem; font-weight:800; border:2px solid #cbd5e1; border-radius:8px;" />
+            </div>
+
+            <button type="submit" class="btn-primary" style="width:100%; padding:0.85rem; font-size:0.95rem; font-weight:800; margin-bottom:1rem;">
+              Verify & Enter Dashboard →
+            </button>
+
+            <div class="flex justify-between items-center" style="font-size:0.8rem;">
+              <button type="button" id="resendOtpBtn" style="color:#0f5a34; font-weight:700; cursor:pointer;" disabled>
+                Resend OTP <span id="otpTimer">(45s)</span>
+              </button>
+              <a href="login.html" style="color:var(--text-muted); text-decoration:underline;">
+                Change Aadhaar
+              </a>
+            </div>
+          </form>
+        </div>
+
+        <!-- Step 3: Admin PIN Login -->
+        <div id="adminStep" class="hidden">
+          <div style="text-align:center; margin-bottom:1.75rem;">
+            <div style="font-size:2.5rem; margin-bottom:0.5rem;">🛡️</div>
+            <h2 style="font-size:1.4rem; font-weight:900; color:#0f5a34;">Enforcement Officer Access</h2>
+            <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:0.25rem;">
+              Enter 4-digit Officer Authorization PIN to open Administration Console.
+            </p>
+          </div>
+
+          <form id="adminForm">
+            <div style="margin-bottom:1.5rem;">
+              <label style="display:block; font-size:0.82rem; font-weight:700; color:var(--text-primary); margin-bottom:0.4rem;">
+                Officer Security PIN
+              </label>
+              <input 
+                type="password" 
+                id="adminPinInput" 
+                placeholder="••••" 
+                maxlength="6"
+                value="8899"
+                style="width:100%; padding:0.85rem 1rem; font-size:1.4rem; text-align:center; font-weight:900; letter-spacing:0.3em; border:1.5px solid #cbd5e1; border-radius:10px;"
+                required
+              />
+              <span style="font-size:0.75rem; color:var(--text-muted); margin-top:0.35rem; display:block;">
+                Demo Officer PIN: <strong>8899</strong>
+              </span>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width:100%; padding:0.85rem; font-size:0.95rem; font-weight:800; margin-bottom:1rem;">
+              Authorize & Open Admin Console →
+            </button>
+
+            <div style="text-align:center;">
+              <a href="#" id="toggleCustomerLogin" style="font-size:0.8rem; color:#0f5a34; font-weight:700; text-decoration:underline;">
+                ← Back to Resident Aadhaar Login
+              </a>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <div id="footerMount"></div>
+
+  <!-- Scripts -->
+  <script src="js/qrcode.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

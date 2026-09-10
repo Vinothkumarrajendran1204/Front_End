@@ -926,7 +926,255 @@ const TASMAC_DATA = {
   ]
 };
 
+// Alcohol Awareness & Health Education Hub Database
+const TASMAC_AWARENESS_DATA = {
+  differenceCards: {
+    withoutAlcohol: {
+      tag: "🟢 WITHOUT ALCOHOL",
+      theme: "success",
+      title: "Life Without Alcohol",
+      subtitle: "Optimal physical vitality, psychological clarity & balanced living",
+      body: [
+        "Better sleep quality",
+        "Better hydration",
+        "Improved physical recovery",
+        "Lower alcohol-related health risks"
+      ],
+      mind: [
+        "Better concentration",
+        "More stable mood",
+        "Better decision-making",
+        "No alcohol-related impairment"
+      ],
+      lifestyle: [
+        "More consistent daily routine",
+        "Better ability to focus on work and studies",
+        "More money saved",
+        "Lower risk of alcohol-related accidents and problems"
+      ]
+    },
+    alcoholUse: {
+      tag: "🟡 ALCOHOL USE",
+      theme: "warning",
+      title: "Alcohol Use (Even Occasional)",
+      subtitle: "Understanding short-term physical and cognitive disruption",
+      message: "Alcohol affects people differently. Less alcohol generally means lower health risk.",
+      body: [
+        "Dehydration",
+        "Reduced coordination",
+        "Slower reaction time",
+        "Disturbed sleep"
+      ],
+      mind: [
+        "Reduced judgment",
+        "Reduced concentration",
+        "Changes in mood",
+        "Impaired decision-making"
+      ],
+      lifestyle: [
+        "Potential next-day fatigue and lower productivity",
+        "Discretionary expenditure on alcohol purchases",
+        "Requires designated drivers or ride-hailing to avoid legal incidents",
+        "Risk scales rapidly if portion sizes or frequencies are miscalculated"
+      ]
+    },
+    frequentAlcoholUse: {
+      tag: "🔴 FREQUENT / DAILY ALCOHOL USE",
+      theme: "danger",
+      title: "Frequent / Daily Alcohol Use",
+      subtitle: "Chronic systemic impact, progressive tolerance & clinical hazards",
+      warningMessage: "Daily alcohol use can increase the risk of dependence and serious health problems.",
+      body: [
+        "Increased risk of liver problems",
+        "Increased blood pressure",
+        "Increased risk of several cancers",
+        "Sleep problems",
+        "Dependence and withdrawal problems"
+      ],
+      mind: [
+        "Difficulty concentrating",
+        "Mood changes",
+        "Anxiety or depression can worsen",
+        "Increased dependence risk",
+        "Problems with decision-making"
+      ],
+      lifestyle: [
+        "Problems with work/studies",
+        "Relationship difficulties",
+        "Financial problems",
+        "Increased risk of accidents and injuries"
+      ]
+    }
+  },
+
+  frequencyMatrix: {
+    noAlcohol: {
+      label: "No Alcohol",
+      badge: "Zero Chemical Risk",
+      theme: "success",
+      description: "Complete abstinence from alcohol eliminates toxic exposure and avoids metabolic strain on organs.",
+      metrics: {
+        sleep: "Natural, undisturbed deep REM sleep cycles with high physical restoration. Waking refreshed without dehydration or grogginess.",
+        concentration: "Sustained daytime mental alertness, optimal working memory, and sharp analytical focus.",
+        mood: "Stable neurotransmitter balance, resilient emotional baseline, and low baseline physiological anxiety.",
+        physicalHealth: "Optimal liver enzyme activity, normal blood pressure, strong cellular immunity, and reduced cancer risk.",
+        dependenceRisk: "Zero risk of physical addiction, neurochemical tolerance build-up, or psychological dependence.",
+        accidentRisk: "Lowest baseline risk. Fully intact sensory reflexes, motor coordination, and road safety."
+      }
+    },
+    occasional: {
+      label: "Occasional Use",
+      badge: "Progressive Health Risk",
+      theme: "warning",
+      description: "Even occasional drinking introduces transient toxicity and neural depression. Risk increases as alcohol exposure increases.",
+      metrics: {
+        sleep: "Sleep onset may feel accelerated, but restorative REM sleep is fragmented, causing frequent night wakeups and daytime fatigue.",
+        concentration: "Short-term distraction, reduced complex problem-solving speed, and next-day mental sluggishness.",
+        mood: "Short-lived dopamine elevation followed by temporary depressive dips, mood swings, or post-alcohol rebound anxiety.",
+        physicalHealth: "The liver prioritizes toxic ethanol breakdown; temporary elevation in blood pressure and acute cellular dehydration.",
+        dependenceRisk: "Risk increases if drinking frequency or volume rises over time without strict personal boundaries.",
+        accidentRisk: "Substantially heightened for several hours. Reaction times decrease by 20–40% even before overt intoxication is felt."
+      }
+    },
+    frequent: {
+      label: "Frequent/Daily Use",
+      badge: "High & Cumulative Hazard",
+      theme: "danger",
+      description: "Chronic daily exposure causes progressive cellular damage, neurochemical adaptation, and systemic medical disorders.",
+      metrics: {
+        sleep: "Severe sleep fragmentation, chronic micro-arousals, suppression of restorative deep stages, and persistent insomnia.",
+        concentration: "Chronic brain fog, diminished prefrontal cortex efficiency, and severe deficits in short-term memory retention.",
+        mood: "High vulnerability to clinical depression, severe anxiety disorders, emotional volatility, and irritability.",
+        physicalHealth: "Substantially increased risk of alcoholic liver cirrhosis, hypertension, cardiomyopathy, gastritis, and multiple cancers.",
+        dependenceRisk: "Very high. Neuroadaptation creates tolerance, strong physical cravings, and severe withdrawal symptoms upon cessation.",
+        accidentRisk: "Critically elevated risk of motor vehicle collisions, workplace mishaps, domestic falls, and severe traumatic injuries."
+      }
+    }
+  },
+
+  bodyMindVisual: {
+    bodyPoints: [
+      {
+        id: "brain",
+        icon: "🧠",
+        label: "Brain",
+        summary: "Neurotransmission & Reflexes",
+        tag: "Central Nervous System",
+        details: "Alcohol depresses central nervous system communications, slows neurotransmission between neurons, shrinks brain tissue over chronic use, and disrupts balance and memory formation in the hippocampus."
+      },
+      {
+        id: "heart",
+        icon: "❤️",
+        label: "Heart",
+        summary: "Cardiovascular Dynamics",
+        tag: "Cardiovascular Health",
+        details: "Frequent alcohol use raises blood pressure, stresses arterial walls, and increases risk of arrhythmias (irregular heartbeat), cardiomyopathy (weakened heart muscle), and stroke."
+      },
+      {
+        id: "health",
+        icon: "🫁",
+        label: "General health",
+        summary: "Immune System & Cellular Vitality",
+        tag: "Systemic Immunity",
+        details: "Alcohol weakens the body's immune defenses, reducing disease resistance for up to 24 hours after intake. Chronic consumption increases risk of cancers of the mouth, esophagus, colon, and breast."
+      },
+      {
+        id: "liver",
+        icon: "🫀",
+        label: "Liver",
+        summary: "Metabolic Filtration & Detox",
+        tag: "Hepatic Organ",
+        details: "The liver processes over 90% of ingested alcohol, generating toxic acetaldehyde. Heavy consumption leads progressively to steatosis (fatty liver), alcoholic hepatitis, fibrosis, and irreversible cirrhosis."
+      },
+      {
+        id: "sleep",
+        icon: "😴",
+        label: "Sleep",
+        summary: "Circadian Rhythm & REM Cycles",
+        tag: "Sleep Architecture",
+        details: "Although alcohol acts as a sedative initially, it severely interrupts REM (rapid eye movement) sleep. As blood alcohol levels drop overnight, the body experiences rebound arousal, leading to broken, non-restorative rest."
+      }
+    ],
+
+    mindPoints: [
+      {
+        id: "concentration",
+        icon: "🧠",
+        label: "Concentration",
+        summary: "Working Memory & Focus",
+        tag: "Cognitive Faculty",
+        details: "Alcohol impairs the frontal lobe's ability to maintain sustained attention, process complex instructions, and retain new information in working memory both during intoxication and the recovery day."
+      },
+      {
+        id: "mood",
+        icon: "😊",
+        label: "Mood",
+        summary: "Emotional Regulation",
+        tag: "Neurochemical Balance",
+        details: "While alcohol may temporarily relieve tension, it depletes serotonin and dopamine reserves. The rebound effect frequently triggers heightened anxiety ('hangxiety'), depressive feelings, and emotional irritability."
+      },
+      {
+        id: "decision",
+        icon: "🎯",
+        label: "Decision-making",
+        summary: "Risk Assessment & Inhibition",
+        tag: "Executive Function",
+        details: "Alcohol diminishes inhibitions and compromises the brain's risk-evaluation mechanisms, significantly increasing the likelihood of regretful choices, impulsive financial spending, and risky personal behavior."
+      },
+      {
+        id: "reaction",
+        icon: "⚡",
+        label: "Reaction time",
+        summary: "Motor Response & Reflexes",
+        tag: "Psychomotor Speed",
+        details: "Even low blood alcohol concentrations (0.02 - 0.05%) noticeably delay muscle response and optical processing. This significantly multiplies the danger when driving, operating tools, or engaging in physical tasks."
+      },
+      {
+        id: "wellbeing",
+        icon: "💭",
+        label: "Mental well-being",
+        summary: "Long-Term Psychological Health",
+        tag: "Psychological Resilience",
+        details: "Using alcohol to cope with stress or sadness creates a vicious cycle of chemical reliance. Long-term sobriety or reduced consumption markedly strengthens resilience, self-esteem, and relationship satisfaction."
+      }
+    ]
+  },
+
+  healthResources: [
+    {
+      name: "Tele-MANAS Tamil Nadu (Govt Mental Health Helpline)",
+      phone: "14416 / 1800-891-4416",
+      hours: "24x7 Toll-Free",
+      type: "Government Mental Health & De-addiction Support",
+      description: "Free, confidential tele-counseling operated by the Health and Family Welfare Department, Govt of Tamil Nadu."
+    },
+    {
+      name: "National Drug & Alcohol De-Addiction Helpline",
+      phone: "1800-11-0031",
+      hours: "24x7 Toll-Free",
+      type: "Ministry of Social Justice and Empowerment",
+      description: "National helpline providing counseling, screening, and guidance to registered de-addiction centers across India."
+    },
+    {
+      name: "Institute of Mental Health (IMH), Chennai",
+      phone: "044-2642 0001",
+      hours: "Mon - Sat: 8:00 AM - 4:00 PM",
+      type: "Premier Govt Psychiatric Institution",
+      description: "Specialized inpatient and outpatient substance-use disorder de-addiction and rehabilitation ward, Medavakkam Tank Road, Kilpauk, Chennai."
+    },
+    {
+      name: "TTK Hospital & De-Addiction Centre",
+      phone: "044-2491 2930 / 2491 8461",
+      hours: "Mon - Sat: 9:00 AM - 5:00 PM",
+      type: "Pioneering Addiction Treatment Institute",
+      description: "Non-profit specialized alcohol and drug de-addiction treatment, family counseling, and outpatient rehabilitation at 4th Main Road, Indira Nagar, Adyar, Chennai."
+    }
+  ]
+};
+
 // Export to window
 if (typeof window !== "undefined") {
   window.TASMAC_DATA = TASMAC_DATA;
+  window.TASMAC_AWARENESS_DATA = TASMAC_AWARENESS_DATA;
 }
+

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nearby Outlets • Unakku Avlotha Limit</title>
+  <meta name="description" content="Search authorized TASMAC retail outlets across Tamil Nadu districts with live stock and distance.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22><rect width=%2248%22 height=%2248%22 rx=%2210%22 fill=%22%230f5a34%22/><path d=%22M21 15 H27 V19 L29 23 V33 H19 V23 L21 19 Z%22 fill=%22white%22/><path d=%22M20 27 L23 30 L28 23%22 stroke=%22%2316a34a%22 stroke-width=%223%22 fill=%22none%22/></svg>">
+</head>
+<body style="background:var(--bg-page);">
+  <div id="headerMount"></div>
+
+  <main style="padding:2.5rem 0 4rem;">
+    <div class="container">
+      
+      <!-- Page Title & Header -->
+      <div class="flex justify-between items-end flex-wrap gap-3" style="margin-bottom:1.75rem;">
+        <div>
+          <span class="badge badge-success" style="margin-bottom:0.4rem;">Tamil Nadu State Outlets</span>
+          <h1 style="font-size:1.85rem; font-weight:900; color:#0f5a34;">Authorized TASMAC Retail Shops</h1>
+          <p style="font-size:0.88rem; color:var(--text-secondary); margin-top:0.25rem;">
+            Select your district and locality to reserve an advance token and guarantee stock pickup.
+          </p>
+        </div>
+        <div id="shopCountDisplay" style="font-size:0.9rem; font-weight:800; color:#0f5a34; background:#f0fdf4; padding:0.4rem 0.85rem; border-radius:8px; border:1px solid #bbf7d0;">
+          Loading Outlets...
+        </div>
+      </div>
+
+      <!-- Location Search & Filter Box -->
+      <div class="card" style="padding:1.5rem; background:#ffffff; border-radius:12px; border:1px solid #e2e8f0; margin-bottom:1.5rem; box-shadow:var(--shadow-sm);">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-3 items-end">
+          <div>
+            <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--text-primary); margin-bottom:0.35rem;">
+              District
+            </label>
+            <select id="districtSelect" style="width:100%; padding:0.65rem 0.85rem; border-radius:8px; border:1.5px solid #cbd5e1; font-weight:600;">
+              <!-- Populated by shops.js -->
+            </select>
+          </div>
+
+          <div>
+            <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--text-primary); margin-bottom:0.35rem;">
+              City / Locality
+            </label>
+            <select id="citySelect" style="width:100%; padding:0.65rem 0.85rem; border-radius:8px; border:1.5px solid #cbd5e1; font-weight:600;">
+              <!-- Populated by shops.js -->
+            </select>
+          </div>
+
+          <div>
+            <label style="display:block; font-size:0.8rem; font-weight:700; color:var(--text-primary); margin-bottom:0.35rem;">
+              Search Outlet / Street
+            </label>
+            <input 
+              type="text" 
+              id="shopSearchInput" 
+              placeholder="e.g. T. Nagar, #101, Elite..."
+              style="width:100%; padding:0.65rem 0.85rem; border-radius:8px; border:1.5px solid #cbd5e1;"
+            />
+          </div>
+
+          <div>
+            <button id="gpsLocationBtn" class="btn-outline" style="width:100%; padding:0.65rem; font-size:0.85rem; display:flex; align-items:center; justify-content:center; gap:0.4rem;">
+              <span>📍</span> Use Current Location
+            </button>
+          </div>
+        </div>
+
+        <!-- Filter Chips Bar -->
+        <div class="flex flex-wrap gap-2 items-center" style="margin-top:1.25rem; padding-top:1rem; border-top:1px solid #f1f5f9;">
+          <span style="font-size:0.75rem; font-weight:700; color:var(--text-muted); text-transform:uppercase;">Quick Filter:</span>
+          <button class="filter-chip active" data-filter="all">All Outlets</button>
+          <button class="filter-chip" data-filter="open">🟢 Open Now</button>
+          <button class="filter-chip" data-filter="elite">⭐ Elite Stores</button>
+          <button class="filter-chip" data-filter="near">📍 Near Me (&lt; 3 km)</button>
+        </div>
+      </div>
+
+      <!-- Shops Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="shopsGrid">
+        <!-- Rendered by shops.js -->
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footerMount"></div>
+
+  <!-- Scripts -->
+  <script src="js/qrcode.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/shops.js"></script>
+</body>
+</html>

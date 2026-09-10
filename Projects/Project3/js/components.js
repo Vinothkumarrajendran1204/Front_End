@@ -105,6 +105,9 @@ const TasmacComponents = {
               <a href="javascript:void(0)" class="nav-link ${activeView === 'limits' ? 'active' : ''}" onclick="tasmacStore.setView('limits')">My Limits</a>
             </li>
             <li class="nav-item">
+              <a href="javascript:void(0)" class="nav-link ${activeView === 'awareness' ? 'active' : ''}" onclick="tasmacStore.setView('awareness')">Alcohol Awareness</a>
+            </li>
+            <li class="nav-item">
               <a href="javascript:void(0)" class="nav-link ${activeView === 'my-bookings' ? 'active' : ''}" onclick="tasmacStore.setView('my-bookings')">My Bookings</a>
             </li>
             <li class="nav-item">
@@ -205,6 +208,9 @@ const TasmacComponents = {
               <button class="btn-filter-action" onclick="tasmacStore.setView('limits')">
                 ${this.icons.shield}
                 <span>Check My Limits</span>
+              </button>
+              <button class="btn-filter-action" style="border-color:var(--primary-border); background:#f0fdf4; color:var(--primary); font-weight:700;" onclick="tasmacStore.setView('awareness')">
+                <span>💚 Alcohol Awareness</span>
               </button>
               <button class="btn-filter-action" onclick="tasmacStore.setView('my-bookings')">
                 ${this.icons.qrCode}
@@ -1343,7 +1349,402 @@ const TasmacComponents = {
     `;
   },
 
-  // 17. Main Footer
+  // 17. Alcohol Awareness Hub View
+  renderAlcoholAwarenessView(state) {
+    const awarenessData = window.TASMAC_AWARENESS_DATA || {};
+    const cards = awarenessData.differenceCards || {};
+    const freq = awarenessData.frequencyMatrix || {};
+    const bodyMind = awarenessData.bodyMindVisual || {};
+
+    const activeFreqKey = window.tasmacApp?.currentFreqTab || "noAlcohol";
+    const activeFreq = freq[activeFreqKey] || freq.noAlcohol;
+
+    const activeNodeId = window.tasmacApp?.currentAnatomyNode || "brain";
+    const allNodes = [...(bodyMind.bodyPoints || []), ...(bodyMind.mindPoints || [])];
+    const activeNode = allNodes.find(n => n.id === activeNodeId) || allNodes[0];
+
+    return `
+      <div class="awareness-hero">
+        <div class="container">
+          <div class="awareness-hero-badge">
+            <span>🌿</span>
+            <span>Government of Tamil Nadu • Public Health & Alcohol Awareness</span>
+          </div>
+          <h1 class="awareness-hero-title">
+            ALCOHOL AWARENESS: <span>Understand the Difference</span>
+          </h1>
+          <p class="awareness-hero-sub">
+            Empowering citizens with evidence-based health awareness. Explore how alcohol affects your biology, cognitive functions, and long-term lifestyle to make informed personal choices.
+          </p>
+        </div>
+      </div>
+
+      <div class="section" style="padding-top:2.5rem;">
+        <div class="container">
+          <!-- SECTION 1: UNDERSTAND THE DIFFERENCE (3 COMPARISON CARDS) -->
+          <div class="section-header" style="text-align:center; display:block; margin-bottom:2.25rem;">
+            <span class="section-eyebrow" style="color:var(--primary);">Comparative Health Analysis</span>
+            <h2 class="section-title">Understand the Difference</h2>
+            <p class="section-subtitle" style="max-width:650px; margin:0.4rem auto 0;">
+              Comparing life without alcohol with the short-term and cumulative systemic effects of alcohol consumption.
+            </p>
+          </div>
+
+          <div class="diff-cards-grid">
+            <!-- Card 1: WITHOUT ALCOHOL (Green) -->
+            <div class="diff-card without-alcohol">
+              <span class="diff-tag-pill success">${cards.withoutAlcohol?.tag || '🟢 WITHOUT ALCOHOL'}</span>
+              <h3 class="diff-card-title">${cards.withoutAlcohol?.title || 'Life Without Alcohol'}</h3>
+              <p class="diff-card-sub">${cards.withoutAlcohol?.subtitle || 'Optimal vitality and cognitive clarity'}</p>
+
+              <!-- Body -->
+              <div class="diff-section-block">
+                <div class="diff-section-header">
+                  <span>🫀 Body</span>
+                </div>
+                <ul class="diff-list">
+                  ${(cards.withoutAlcohol?.body || []).map(item => `
+                    <li><span class="diff-bullet" style="color:#16a34a;">✓</span><span>${item}</span></li>
+                  `).join('')}
+                </ul>
+              </div>
+
+              <!-- Mind -->
+              <div class="diff-section-block">
+                <div class="diff-section-header">
+                  <span>🧠 Mind</span>
+                </div>
+                <ul class="diff-list">
+                  ${(cards.withoutAlcohol?.mind || []).map(item => `
+                    <li><span class="diff-bullet" style="color:#16a34a;">✓</span><span>${item}</span></li>
+                  `).join('')}
+                </ul>
+              </div>
+
+              <!-- Lifestyle -->
+              <div class="diff-section-block">
+                <div class="diff-section-header">
+                  <span>🌟 Lifestyle</span>
+                </div>
+                <ul class="diff-list">
+                  ${(cards.withoutAlcohol?.lifestyle || []).map(item => `
+                    <li><span class="diff-bullet" style="color:#16a34a;">✓</span><span>${item}</span></li>
+                  `).join('')}
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card 2: ALCOHOL USE (Amber) -->
+            <div class="diff-card alcohol-use">
+              <span class="diff-tag-pill warning">${cards.alcoholUse?.tag || '🟡 ALCOHOL USE'}</span>
+              <h3 class="diff-card-title">${cards.alcoholUse?.title || 'Alcohol Use'}</h3>
+              <p class="diff-card-sub">Even occasional alcohol use can cause short-term effects such as:</p>
+
+              <!-- Body -->
+              <div class="diff-section-block">
+                <div class="diff-section-header">
+                  <span>🫀 Body</span>
+                </div>
+                <ul class="diff-list">
+                  ${(cards.alcoholUse?.body || []).map(item => `
+                    <li><span class="diff-bullet" style="color:#d97706;">•</span><span>${item}</span></li>
+                  `).join('')}
+                </ul>
+              </div>
+
+              <!-- Mind -->
+              <div class="diff-section-block">
+                <div class="diff-section-header">
+                  <span>🧠 Mind</span>
+                </div>
+                <ul class="diff-list">
+                  ${(cards.alcoholUse?.mind || []).map(item => `
+                    <li><span class="diff-bullet" style="color:#d97706;">•</span><span>${item}</span></li>
+                  `).join('')}
+                </ul>
+              </div>
+
+              <!-- Mandatory Educational Message -->
+              <div class="diff-callout-message">
+                <span style="font-size:1.1rem;">💡</span>
+                <span>${cards.alcoholUse?.message || '“Alcohol affects people differently. Less alcohol generally means lower health risk.”'}</span>
+              </div>
+            </div>
+
+            <!-- Card 3: FREQUENT / DAILY ALCOHOL USE (Red Warning) -->
+            <div class="diff-card frequent-use">
+              <span class="diff-tag-pill danger">${cards.frequentAlcoholUse?.tag || '🔴 FREQUENT / DAILY ALCOHOL USE'}</span>
+              <h3 class="diff-card-title">${cards.frequentAlcoholUse?.title || 'Frequent / Daily Alcohol Use'}</h3>
+              <p class="diff-card-sub">Possible effects include:</p>
+
+              <!-- Body -->
+              <div class="diff-section-block">
+                <div class="diff-section-header">
+                  <span>🫀 Body</span>
+                </div>
+
+                <ul class="diff-list">
+                  ${(cards.frequentAlcoholUse?.body || []).map(item => `
+                    <li><span class="diff-bullet" style="color:#dc2626;">⚠</span><span>${item}</span></li>
+                  `).join('')}
+                </ul>
+              </div>
+
+              <!-- Mind -->
+              <div class="diff-section-block">
+                <div class="diff-section-header">
+                  <span>🧠 Mind</span>
+                </div>
+                <ul class="diff-list">
+                  ${(cards.frequentAlcoholUse?.mind || []).map(item => `
+                    <li><span class="diff-bullet" style="color:#dc2626;">⚠</span><span>${item}</span></li>
+                  `).join('')}
+                </ul>
+              </div>
+
+              <!-- Lifestyle -->
+              <div class="diff-section-block">
+                <div class="diff-section-header">
+                  <span>🌟 Lifestyle</span>
+                </div>
+                <ul class="diff-list">
+                  ${(cards.frequentAlcoholUse?.lifestyle || []).map(item => `
+                    <li><span class="diff-bullet" style="color:#dc2626;">⚠</span><span>${item}</span></li>
+                  `).join('')}
+                </ul>
+              </div>
+
+              <!-- Prominent Warning Banner -->
+              <div class="diff-warning-banner">
+                <span style="font-size:1.1rem;">⚠️</span>
+                <span>${cards.frequentAlcoholUse?.warningMessage || '“Daily alcohol use can increase the risk of dependence and serious health problems.”'}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- SECTION 2: FREQUENCY COMPARISON (3 TABS) -->
+          <div class="freq-section">
+            <div class="section-header" style="text-align:center; display:block; margin-bottom:1.5rem;">
+              <span class="section-eyebrow" style="color:var(--accent-gold);">Interactive Risk Assessment</span>
+              <h2 class="section-title">How Does Alcohol Frequency Affect You?</h2>
+              <p class="section-subtitle" style="max-width:680px; margin:0.4rem auto 0;">
+                Risk generally increases as alcohol exposure increases. Select a frequency tier below to inspect how physiological and behavioral indicators change.
+              </p>
+            </div>
+
+            <!-- 3 Selectable Tabs -->
+            <div class="freq-tabs-bar">
+              <button class="freq-tab-btn tab-no-alcohol ${activeFreqKey === 'noAlcohol' ? 'active' : ''}" onclick="tasmacApp.switchFrequencyTab('noAlcohol')">
+                <span>🟢 No Alcohol</span>
+              </button>
+              <button class="freq-tab-btn tab-occasional ${activeFreqKey === 'occasional' ? 'active' : ''}" onclick="tasmacApp.switchFrequencyTab('occasional')">
+                <span>🟡 Occasional Use</span>
+              </button>
+              <button class="freq-tab-btn tab-frequent ${activeFreqKey === 'frequent' ? 'active' : ''}" onclick="tasmacApp.switchFrequencyTab('frequent')">
+                <span>🔴 Frequent/Daily Use</span>
+              </button>
+            </div>
+
+            <!-- Tab Content Description -->
+            <div style="text-align:center; margin-bottom:2rem;">
+              <span class="status-indicator-pill ${activeFreqKey === 'noAlcohol' ? 'status-active' : activeFreqKey === 'occasional' ? 'status-warning' : 'status-restricted'}" style="font-size:0.82rem; padding:0.3rem 0.9rem;">
+                ${activeFreq.badge}
+              </span>
+              <p style="font-size:0.92rem; color:var(--text-secondary); max-width:680px; margin:0.75rem auto 0; line-height:1.6;">
+                ${activeFreq.description}
+              </p>
+            </div>
+
+            <!-- Frequency Metrics Grid (6 Dimensions) -->
+            <div class="freq-grid">
+              <div class="freq-metric-card">
+                <div class="freq-metric-header">
+                  <div class="freq-metric-title">
+                    <span>😴 Sleep</span>
+                  </div>
+                </div>
+                <p class="freq-metric-desc">${activeFreq.metrics.sleep}</p>
+              </div>
+
+              <div class="freq-metric-card">
+                <div class="freq-metric-header">
+                  <div class="freq-metric-title">
+                    <span>🧠 Concentration</span>
+                  </div>
+                </div>
+                <p class="freq-metric-desc">${activeFreq.metrics.concentration}</p>
+              </div>
+
+              <div class="freq-metric-card">
+                <div class="freq-metric-header">
+                  <div class="freq-metric-title">
+                    <span>😊 Mood</span>
+                  </div>
+                </div>
+                <p class="freq-metric-desc">${activeFreq.metrics.mood}</p>
+              </div>
+
+              <div class="freq-metric-card">
+                <div class="freq-metric-header">
+                  <div class="freq-metric-title">
+                    <span>🫀 Physical health</span>
+                  </div>
+                </div>
+                <p class="freq-metric-desc">${activeFreq.metrics.physicalHealth}</p>
+              </div>
+
+              <div class="freq-metric-card">
+                <div class="freq-metric-header">
+                  <div class="freq-metric-title">
+                    <span>🔗 Dependence risk</span>
+                  </div>
+                </div>
+                <p class="freq-metric-desc">${activeFreq.metrics.dependenceRisk}</p>
+              </div>
+
+              <div class="freq-metric-card">
+                <div class="freq-metric-header">
+                  <div class="freq-metric-title">
+                    <span>⚡ Accident/injury risk</span>
+                  </div>
+                </div>
+                <p class="freq-metric-desc">${activeFreq.metrics.accidentRisk}</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- SECTION 3: BODY & MIND VISUAL (INTERACTIVE) -->
+          <div class="bodymind-section">
+            <div class="section-header" style="text-align:center; display:block; margin-bottom:2rem;">
+              <span class="section-eyebrow" style="color:var(--primary);">Interactive Anatomy & Psychology Explorer</span>
+              <h2 class="section-title">Body & Mind Visual</h2>
+              <p class="section-subtitle" style="max-width:680px; margin:0.4rem auto 0;">
+                Click any organ on the left or psychological faculty on the right to examine how alcohol interacts with human biology.
+              </p>
+            </div>
+
+            <div class="bodymind-layout">
+              <!-- Left: BODY -->
+              <div class="bodymind-col">
+                <div class="bodymind-col-header">
+                  <span>🫀</span>
+                  <span>BODY</span>
+                </div>
+                ${(bodyMind.bodyPoints || []).map(pt => `
+                  <button class="bodymind-node-btn ${activeNodeId === pt.id ? 'active' : ''}" onclick="tasmacApp.selectAnatomyPoint('${pt.id}')">
+                    <span class="bodymind-node-icon">${pt.icon}</span>
+                    <div>
+                      <div class="bodymind-node-title">${pt.label}</div>
+                      <div class="bodymind-node-sub">${pt.summary}</div>
+                    </div>
+                  </button>
+                `).join('')}
+              </div>
+
+              <!-- Center: Human Body Illustration -->
+              <div class="bodymind-center">
+                <div class="anatomy-svg-wrapper">
+                  <svg viewBox="0 0 200 360" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Head & Brain Contour -->
+                    <circle cx="100" cy="40" r="26" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+                    <!-- Neck -->
+                    <rect x="92" y="66" width="16" height="18" fill="#e2e8f0" rx="3"/>
+                    <!-- Torso -->
+                    <path d="M60 84 C60 84, 75 80, 100 80 C125 80, 140 84, 140 84 C148 100, 150 145, 142 195 C135 220, 125 225, 100 225 C75 225, 65 220, 58 195 C50 145, 52 100, 60 84 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+                    <!-- Shoulders & Arms -->
+                    <path d="M58 86 C40 105, 30 160, 36 210 C38 218, 44 218, 46 210 C48 165, 56 125, 66 100" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+                    <path d="M142 86 C160 105, 170 160, 164 210 C162 218, 156 218, 154 210 C152 165, 144 125, 134 100" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+                    <!-- Pelvis & Legs -->
+                    <path d="M68 225 C65 250, 66 310, 72 355 C74 360, 84 360, 86 355 C90 310, 94 265, 96 235" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+                    <path d="M132 225 C135 250, 134 310, 128 355 C126 360, 116 360, 114 355 C110 310, 106 265, 104 235" fill="#e2e8f0" stroke="#94a3b8" stroke-width="2"/>
+                    
+                    <!-- Internal Organ Stylized Silhouettes -->
+                    <!-- Brain -->
+                    <circle cx="100" cy="38" r="14" fill="#0f5a34" opacity="0.25"/>
+                    <!-- Heart -->
+                    <path d="M110 115 C110 115, 118 108, 124 115 C130 122, 122 132, 110 142 C98 132, 90 122, 96 115 C102 108, 110 115, 110 115 Z" fill="#dc2626" opacity="0.3"/>
+                    <!-- Lungs -->
+                    <path d="M82 108 C75 115, 75 140, 84 150 C90 140, 90 115, 82 108 Z" fill="#0284c7" opacity="0.25"/>
+                    <path d="M118 108 C125 115, 125 140, 116 150 C110 140, 110 115, 118 108 Z" fill="#0284c7" opacity="0.25"/>
+                    <!-- Liver -->
+                    <path d="M85 155 C85 155, 118 152, 124 162 C128 172, 105 182, 85 175 C80 168, 80 160, 85 155 Z" fill="#d97706" opacity="0.35"/>
+                  </svg>
+
+                  <!-- Interactive Pulse Dots Positioned on Organs -->
+                  <div class="anatomy-pulse-point ${activeNodeId === 'brain' ? 'active' : ''}" style="top:28px; left:91px;" title="Brain" onclick="tasmacApp.selectAnatomyPoint('brain')"></div>
+                  <div class="anatomy-pulse-point ${activeNodeId === 'sleep' ? 'active' : ''}" style="top:48px; left:108px;" title="Sleep" onclick="tasmacApp.selectAnatomyPoint('sleep')"></div>
+                  <div class="anatomy-pulse-point ${activeNodeId === 'heart' ? 'active' : ''}" style="top:125px; left:108px;" title="Heart" onclick="tasmacApp.selectAnatomyPoint('heart')"></div>
+                  <div class="anatomy-pulse-point ${activeNodeId === 'health' ? 'active' : ''}" style="top:120px; left:75px;" title="General Health / Lungs" onclick="tasmacApp.selectAnatomyPoint('health')"></div>
+                  <div class="anatomy-pulse-point ${activeNodeId === 'liver' ? 'active' : ''}" style="top:162px; left:100px;" title="Liver" onclick="tasmacApp.selectAnatomyPoint('liver')"></div>
+                </div>
+
+                <span style="font-size:0.75rem; color:var(--text-muted); margin-top:0.75rem; font-weight:600;">
+                  Click pulse points or cards to inspect details
+                </span>
+              </div>
+
+              <!-- Right: MIND & BEHAVIOR -->
+              <div class="bodymind-col">
+                <div class="bodymind-col-header mind">
+                  <span>🧠</span>
+                  <span>MIND & BEHAVIOR</span>
+                </div>
+                ${(bodyMind.mindPoints || []).map(pt => `
+                  <button class="bodymind-node-btn mind-node ${activeNodeId === pt.id ? 'active' : ''}" onclick="tasmacApp.selectAnatomyPoint('${pt.id}')">
+                    <span class="bodymind-node-icon">${pt.icon}</span>
+                    <div>
+                      <div class="bodymind-node-title">${pt.label}</div>
+                      <div class="bodymind-node-sub">${pt.summary}</div>
+                    </div>
+                  </button>
+                `).join('')}
+              </div>
+            </div>
+
+            <!-- Educational Detail Callout Card -->
+            <div class="bodymind-detail-card" id="anatomyDetailPanel">
+              <div class="bodymind-detail-header">
+                <div class="bodymind-detail-title">
+                  <span>${activeNode?.icon || '🔬'}</span>
+                  <span>${activeNode?.label || 'Anatomy Point'} — ${activeNode?.summary || ''}</span>
+                </div>
+                <span class="bodymind-detail-tag">${activeNode?.tag || 'Clinical Guidance'}</span>
+              </div>
+              <p class="bodymind-detail-body">
+                ${activeNode?.details || 'Select any item above to view detailed medical guidance.'}
+              </p>
+            </div>
+          </div>
+
+          <!-- SECTION 4: RESPONSIBLE CHOICE MESSAGE BANNER -->
+          <div class="responsible-choice-banner">
+            <h3 class="responsible-choice-title">“Your health comes first.”</h3>
+            <p class="responsible-choice-text">
+              Alcohol can affect your body, brain, sleep, judgment, and long-term health. Choosing not to drink avoids alcohol-related risks. If you drink, understanding the risks can help you make informed decisions.
+            </p>
+            <div class="responsible-choice-actions">
+              <button class="btn-choice-gold" onclick="tasmacApp.openLearnMoreModal()">
+                <span>📖 Learn More</span>
+              </button>
+              <button class="btn-choice-white" onclick="tasmacApp.openHealthResourcesModal()">
+                <span>🏥 Health Resources</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- SECTION 5: STATUTORY MEDICAL DISCLAIMER -->
+          <div class="medical-disclaimer-card">
+            <p>
+              ⚠️ <strong>Disclaimer:</strong> This information is for general health awareness and does not replace professional medical advice.
+            </p>
+          </div>
+        </div>
+      </div>
+    `;
+  },
+
+  // 18. Main Footer
   renderFooter() {
     return `
       <footer class="main-footer">
@@ -1366,6 +1767,7 @@ const TasmacComponents = {
               <h4 class="footer-col-title">Quick Navigation</h4>
               <ul class="footer-links">
                 <li><a href="javascript:void(0)" onclick="tasmacStore.setView('home')">Home Page</a></li>
+                <li><a href="javascript:void(0)" onclick="tasmacStore.setView('awareness')">Alcohol Awareness</a></li>
                 <li><a href="javascript:void(0)" onclick="tasmacStore.setView('shops')">Find Nearby Shops</a></li>
                 <li><a href="javascript:void(0)" onclick="tasmacStore.setView('shop-detail')">Browse Products</a></li>
                 <li><a href="javascript:void(0)" onclick="tasmacStore.setView('limits')">Quota Guidelines</a></li>
@@ -1411,3 +1813,4 @@ const TasmacComponents = {
 };
 
 window.TasmacComponents = TasmacComponents;
+

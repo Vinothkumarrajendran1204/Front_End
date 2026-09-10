@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advance Token Booking • Unakku Avlotha Limit</title>
+  <meta name="description" content="11-step structured advance collection token booking workflow with strict daily quota limit enforcement.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 48 48%22><rect width=%2248%22 height=%2248%22 rx=%2210%22 fill=%22%230f5a34%22/><path d=%22M21 15 H27 V19 L29 23 V33 H19 V23 L21 19 Z%22 fill=%22white%22/><path d=%22M20 27 L23 30 L28 23%22 stroke=%22%2316a34a%22 stroke-width=%223%22 fill=%22none%22/></svg>">
+</head>
+<body style="background:var(--bg-page);">
+  <div id="headerMount"></div>
+
+  <main style="padding:2.5rem 0 4rem;">
+    <div class="container" style="max-width:880px;">
+      
+      <!-- Wizard Title -->
+      <div style="margin-bottom:1.5rem; text-align:center;">
+        <span class="badge badge-success" style="margin-bottom:0.35rem;">Smart Queue Token System</span>
+        <h1 style="font-size:1.85rem; font-weight:900; color:#0f5a34;">Reserve Physical Collection Token</h1>
+        <p style="font-size:0.85rem; color:var(--text-secondary); margin-top:0.25rem;">
+          Guaranteed stock reservation at your chosen TASMAC outlet. Avoid queues and pick up during your designated time slot.
+        </p>
+      </div>
+
+      <!-- Main Wizard Shell -->
+      <div id="bookingWizardContainer">
+        <div class="card" style="padding:2rem; background:#ffffff; border-radius:16px; border:1px solid #e2e8f0; box-shadow:var(--shadow-md);">
+          
+          <!-- Step 1 & 2: Retail Outlet Selection -->
+          <div style="margin-bottom:1.75rem;">
+            <label style="display:block; font-size:0.85rem; font-weight:800; color:#0f5a34; margin-bottom:0.45rem;">
+              1. Select Physical TASMAC Retail Outlet
+            </label>
+            <select id="wizardShopSelect" style="width:100%; padding:0.75rem 1rem; border-radius:10px; border:1.5px solid #cbd5e1; font-weight:600; font-size:0.95rem;">
+              <!-- Populated by booking.js -->
+            </select>
+          </div>
+
+          <!-- Step 3 & 4: Category Selection (Strict HOT vs NON-HOT) -->
+          <div style="margin-bottom:1.75rem;">
+            <label style="display:block; font-size:0.85rem; font-weight:800; color:#0f5a34; margin-bottom:0.45rem;">
+              2. Select Spirit Category (Strict Segregation)
+            </label>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <button type="button" id="wizardCatHot" style="padding:1rem; border:2px solid #e2e8f0; border-radius:10px; text-align:left; cursor:pointer; background:#ffffff; transition:all 0.15s ease;">
+                <div class="flex items-center gap-2">
+                  <span style="font-size:1.5rem;">🔥</span>
+                  <strong>HOT Spirits</strong>
+                </div>
+                <div style="font-size:0.78rem; margin-top:0.25rem;">
+                  Whisky, Brandy, Rum, Vodka • <strong>Strict Max 1/day</strong>
+                </div>
+              </button>
+
+              <button type="button" id="wizardCatNonHot" style="padding:1rem; border:2px solid #e2e8f0; border-radius:10px; text-align:left; cursor:pointer; background:#ffffff; transition:all 0.15s ease;">
+                <div class="flex items-center gap-2">
+                  <span style="font-size:1.5rem;">🍺</span>
+                  <strong>NON-HOT Mild</strong>
+                </div>
+                <div style="font-size:0.78rem; margin-top:0.25rem;">
+                  Beer, Lager, Wine • <strong>Strict Max 2/day</strong>
+                </div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Step 5: Product Selection -->
+          <div style="margin-bottom:1.75rem;">
+            <label style="display:block; font-size:0.85rem; font-weight:800; color:#0f5a34; margin-bottom:0.45rem;">
+              3. Choose Product from Outlet Inventory
+            </label>
+            <select id="wizardProductSelect" style="width:100%; padding:0.75rem 1rem; border-radius:10px; border:1.5px solid #cbd5e1; font-weight:600; font-size:0.95rem;">
+              <!-- Populated by booking.js -->
+            </select>
+          </div>
+
+          <!-- Step 6: Strict Quantity Stepper -->
+          <div style="margin-bottom:1.75rem; background:#f8fafc; padding:1.25rem; border-radius:10px; border:1px solid #e2e8f0;">
+            <div class="flex justify-between items-center flex-wrap gap-2">
+              <div>
+                <label style="display:block; font-size:0.85rem; font-weight:800; color:#0f5a34; margin-bottom:0.2rem;">
+                  4. Quantity (Enforced by Daily Limit)
+                </label>
+                <div id="qtyLimitNote" style="font-size:0.8rem; color:var(--text-secondary);">
+                  Loading remaining limit...
+                </div>
+              </div>
+
+              <div class="strict-stepper">
+                <button type="button" class="stepper-btn" id="qtyMinusBtn">–</button>
+                <input type="text" class="stepper-input" id="qtyDisplayInput" value="1" readonly />
+                <button type="button" class="stepper-btn" id="qtyPlusBtn">+</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 7 & 8: Time Slot Selection -->
+          <div style="margin-bottom:2rem;">
+            <label style="display:block; font-size:0.85rem; font-weight:800; color:#0f5a34; margin-bottom:0.45rem;">
+              5. Select Today's Collection Time Slot
+            </label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2" id="wizardSlotsGrid">
+              <!-- Populated by booking.js -->
+            </div>
+          </div>
+
+          <!-- Step 9: Review Summary Box -->
+          <div style="background:#f0fdf4; border:1.5px solid #bbf7d0; border-radius:12px; padding:1.25rem; margin-bottom:1.75rem;">
+            <h4 style="font-size:0.95rem; font-weight:800; color:#0f5a34; margin-bottom:0.75rem;">
+              📋 Token Reservation Summary
+            </h4>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-3" style="font-size:0.82rem;">
+              <div>
+                <span style="color:var(--text-muted); display:block;">Selected Outlet</span>
+                <strong id="sumShop">-</strong>
+              </div>
+              <div>
+                <span style="color:var(--text-muted); display:block;">Product</span>
+                <strong id="sumProduct">-</strong>
+              </div>
+              <div>
+                <span style="color:var(--text-muted); display:block;">Category & Units</span>
+                <strong id="sumQuantity">-</strong>
+              </div>
+              <div>
+                <span style="color:var(--text-muted); display:block;">Time Slot</span>
+                <strong id="sumSlot" style="color:#b45309;">-</strong>
+              </div>
+              <div>
+                <span style="color:var(--text-muted); display:block;">Amount Payable</span>
+                <strong id="sumTotal" style="color:#0f5a34; font-size:1.1rem;">₹0</strong>
+                <span style="font-size:0.7rem; color:var(--text-muted);">(Pay at physical counter)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 10: Confirmation Button -->
+          <button type="button" id="confirmBookingBtn" class="btn-primary" style="width:100%; padding:0.95rem; font-size:1rem; font-weight:800;">
+            Confirm & Generate Token Pass →
+          </button>
+
+          <p style="text-align:center; font-size:0.75rem; color:var(--text-muted); margin-top:0.85rem;">
+            ⚠️ Statutory: Liquor consumption is injurious to health. Be safe — do not drink and drive.
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="footerMount"></div>
+
+  <!-- Scripts -->
+  <script src="js/qrcode.min.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/booking.js"></script>
+</body>
+</html>
