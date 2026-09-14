@@ -86,8 +86,11 @@ const TasmacComponents = {
             <div class="emblem-icon">TN</div>
             <div class="brand-text">
               <span class="brand-title">TASMAC Smart Booking</span>
+<<<<<<< HEAD
               <span class="brand-sub">Quota & Limit Management Portal</span>
 
+=======
+>>>>>>> 0f6669220e4a27be25db76618351ff01309a7d88
             </div>
           </div>
 
