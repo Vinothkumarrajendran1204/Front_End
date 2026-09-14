@@ -87,11 +87,11 @@ const TasmacComponents = {
             <div class="brand-text">
               <span class="brand-title">TASMAC Smart Booking</span>
               <span class="brand-sub">Quota & Limit Management Portal</span>
-              <span class="brand-tamil">தமிழ்நாடு அரசு - டாஸ்மாக் இணைய முன்பதிவு</span>
+
             </div>
           </div>
 
-          <ul class="nav-links">
+          <ul class="nav-links" id="mainNavLinks">
             <li class="nav-item">
               <a href="javascript:void(0)" class="nav-link ${activeView === 'home' ? 'active' : ''}" onclick="tasmacStore.setView('home')">Home</a>
             </li>
@@ -143,6 +143,15 @@ const TasmacComponents = {
                 <span>Portal View</span>
               </button>
             `}
+
+            <!-- Mobile Menu Toggle Button -->
+            <button class="btn-menu-toggle" id="btnMenuToggle" onclick="tasmacApp.toggleMobileMenu()" title="Toggle Navigation Menu" aria-label="Toggle navigation">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            </button>
           </div>
         </div>
       </header>
@@ -197,29 +206,34 @@ const TasmacComponents = {
               Secure Aadhaar-verified advance token booking system across Tamil Nadu state outlets. Transparent weekly quota tracking, queue-free collection time slots, and legal compliance assurance.
             </p>
 
-            <div class="hero-actions-row">
-              <button class="btn-primary" onclick="tasmacStore.setView('shops')">
-                ${this.icons.mapPin}
-                <span>Find Nearby Shop</span>
-              </button>
-              <button class="btn-outline" onclick="tasmacStore.setView('shop-detail')">
-                <span>Book Products</span>
-              </button>
-              <button class="btn-filter-action" onclick="tasmacStore.setView('limits')">
-                ${this.icons.shield}
-                <span>Check My Limits</span>
-              </button>
-              <button class="btn-filter-action" style="border-color:var(--primary-border); background:#f0fdf4; color:var(--primary); font-weight:700;" onclick="tasmacStore.setView('awareness')">
-                <span>💚 Alcohol Awareness</span>
-              </button>
-              <button class="btn-filter-action" onclick="tasmacStore.setView('my-bookings')">
-                ${this.icons.qrCode}
-                <span>My Bookings</span>
-              </button>
-              <button class="btn-filter-action" onclick="tasmacStore.setView('history')">
-                ${this.icons.lock}
-                <span>Purchase History</span>
-              </button>
+            <div class="hero-actions-container">
+              <div class="hero-primary-actions">
+                <button class="btn-primary" onclick="tasmacStore.setView('shops')">
+                  ${this.icons.mapPin}
+                  <span>Find Nearby Shop</span>
+                </button>
+                <button class="btn-outline" onclick="tasmacStore.setView('shop-detail')">
+                  <span>Book Products</span>
+                </button>
+                <button class="btn-outline" onclick="tasmacStore.setView('limits')">
+                  ${this.icons.shield}
+                  <span>Check My Limits</span>
+                </button>
+              </div>
+
+              <div class="hero-quick-shortcuts">
+                <button class="hero-pill-btn hero-pill-accent" onclick="tasmacStore.setView('awareness')">
+                  <span>💚 Alcohol Awareness</span>
+                </button>
+                <button class="hero-pill-btn" onclick="tasmacStore.setView('my-bookings')">
+                  ${this.icons.qrCode}
+                  <span>My Bookings</span>
+                </button>
+                <button class="hero-pill-btn" onclick="tasmacStore.setView('history')">
+                  ${this.icons.lock}
+                  <span>Purchase History</span>
+                </button>
+              </div>
             </div>
 
             <div class="hero-stats-row">
@@ -324,8 +338,11 @@ const TasmacComponents = {
           </div>
 
           <div class="meter-subtext">
-            <span>Remaining: <strong>${alc.remaining} unit</strong> (Max: 1 Full Bottle OR 2 Beers OR 2 Wines)</span>
+            <span>Remaining: <strong>${alc.remaining} unit</strong></span>
             <span>Resets: <strong>${resetStr}</strong></span>
+          </div>
+          <div class="meter-subtext-detail">
+            <span>Max Quota: 1 Full Bottle (750ml) OR 2 Beers OR 2 Wines</span>
           </div>
 
           ${alcoholWarningHtml}
@@ -364,7 +381,7 @@ const TasmacComponents = {
             </div>
           </div>
 
-          <div class="meter-subtext" style="margin-top:0.5rem;">
+          <div class="meter-subtext-detail" style="margin-top:0.6rem;">
             <span>Rule: High max ${cig.high.max} / Low max ${cig.low.max} packs based on alcohol status</span>
           </div>
         </div>

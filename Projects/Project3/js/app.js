@@ -36,10 +36,35 @@ class TasmacApp {
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         this.closeAllModals();
+        this.closeMobileMenu();
+      }
+    });
+
+    document.addEventListener("click", (e) => {
+      const navLinks = document.getElementById("mainNavLinks");
+      const toggleBtn = document.getElementById("btnMenuToggle");
+      if (navLinks && navLinks.classList.contains("open")) {
+        if (!navLinks.contains(e.target) && (!toggleBtn || !toggleBtn.contains(e.target))) {
+          navLinks.classList.remove("open");
+        }
       }
     });
 
     console.log("TASMAC Smart Portal initialized successfully.");
+  }
+
+  toggleMobileMenu() {
+    const navLinks = document.getElementById("mainNavLinks");
+    if (navLinks) {
+      navLinks.classList.toggle("open");
+    }
+  }
+
+  closeMobileMenu() {
+    const navLinks = document.getElementById("mainNavLinks");
+    if (navLinks) {
+      navLinks.classList.remove("open");
+    }
   }
 
 
