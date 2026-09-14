@@ -660,7 +660,7 @@ class TasmacApp {
 
     const maxAllowedQty = product.category === "Hard Liquor" ? 1 :
       (product.category === "Beer" || product.category === "Wine") ? Math.floor(limits.alcohol.remaining / 0.5) :
-      (product.nicotineType === "high") ? limits.cigarettes.high.remaining : limits.cigarettes.low.remaining;
+      (product.HarmfulType === "high") ? limits.cigarettes.high.remaining : limits.cigarettes.low.remaining;
 
     const modalHtml = `
       <div class="modal-overlay" onclick="if(event.target === this) tasmacApp.closeAllModals()">

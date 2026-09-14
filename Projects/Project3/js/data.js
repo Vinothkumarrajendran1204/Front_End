@@ -591,85 +591,85 @@ const TASMAC_DATA = {
       id: "CG-01",
       name: "Classic Regular King Size",
       category: "Cigarettes",
-      subCategory: "High Nicotine",
+      subCategory: "High Harmful",
       brand: "Classic",
       size: "Pack of 20 Sticks",
       volumeMl: 0,
-      abv: "Nicotine: 1.1mg | Tar: 12mg",
+      abv: "Harmful: 1.1mg | Tar: 12mg",
       price: 380,
       description: "Full-flavoured premium blend with toasted Virginia tobaccos.",
       image: "https://images.unsplash.com/photo-1527061011665-3652c757a4d4?w=600&auto=format&fit=crop&q=80",
-      nicotineType: "high"
+      HarmfulType: "high"
     },
     {
       id: "CG-02",
       name: "Gold Flake Kings Blue",
       category: "Cigarettes",
-      subCategory: "High Nicotine",
+      subCategory: "High Harmful",
       brand: "Gold Flake",
       size: "Pack of 20 Sticks",
       volumeMl: 0,
-      abv: "Nicotine: 1.0mg | Tar: 11mg",
+      abv: "Harmful: 1.0mg | Tar: 11mg",
       price: 380,
       description: "Iconic golden Virginia leaf blend with smooth rich draw.",
       image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&auto=format&fit=crop&q=80",
-      nicotineType: "high"
+      HarmfulType: "high"
     },
     {
       id: "CG-03",
       name: "Marlboro Red Premium Kings",
       category: "Cigarettes",
-      subCategory: "High Nicotine",
+      subCategory: "High Harmful",
       brand: "Marlboro",
       size: "Pack of 20 Sticks",
       volumeMl: 0,
-      abv: "Nicotine: 1.2mg | Tar: 13mg",
+      abv: "Harmful: 1.2mg | Tar: 13mg",
       price: 410,
       description: "Bold American tobacco blend with distinctive red chevron pack.",
       image: "https://images.unsplash.com/photo-1527061011665-3652c757a4d4?w=600&auto=format&fit=crop&q=80",
-      nicotineType: "high"
+      HarmfulType: "high"
     },
     {
       id: "CG-04",
       name: "Classic Milds Smooth Filter",
       category: "Cigarettes",
-      subCategory: "Low Nicotine",
+      subCategory: "Low Harmful",
       brand: "Classic",
       size: "Pack of 20 Sticks",
       volumeMl: 0,
-      abv: "Nicotine: 0.6mg | Tar: 6mg",
+      abv: "Harmful: 0.6mg | Tar: 6mg",
       price: 380,
       description: "Charcoal active-filtered blend crafted for mellow smoothness.",
       image: "https://images.unsplash.com/photo-1527061011665-3652c757a4d4?w=600&auto=format&fit=crop&q=80",
-      nicotineType: "low"
+      HarmfulType: "low"
     },
     {
       id: "CG-05",
       name: "Gold Flake Lights Fine Virginia",
       category: "Cigarettes",
-      subCategory: "Low Nicotine",
+      subCategory: "Low Harmful",
       brand: "Gold Flake",
       size: "Pack of 20 Sticks",
       volumeMl: 0,
-      abv: "Nicotine: 0.5mg | Tar: 5mg",
+      abv: "Harmful: 0.5mg | Tar: 5mg",
       price: 380,
       description: "Light balanced cigarette with micro-perforated ventilation tips.",
       image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=600&auto=format&fit=crop&q=80",
-      nicotineType: "low"
+      HarmfulType: "low"
     },
     {
       id: "CG-06",
       name: "Marlboro Lights Gold",
       category: "Cigarettes",
-      subCategory: "Low Nicotine",
+      subCategory: "Low Harmful",
       brand: "Marlboro",
       size: "Pack of 20 Sticks",
       volumeMl: 0,
-      abv: "Nicotine: 0.6mg | Tar: 6mg",
+      abv: "Harmful: 0.6mg | Tar: 6mg",
       price: 410,
-      description: "Crisp refined taste featuring lower tar and reduced nicotine content.",
+      description: "Crisp refined taste featuring lower tar and reduced Harmful content.",
       image: "https://images.unsplash.com/photo-1527061011665-3652c757a4d4?w=600&auto=format&fit=crop&q=80",
-      nicotineType: "low"
+      HarmfulType: "low"
     }
   ],
 
@@ -690,8 +690,8 @@ const TASMAC_DATA = {
         maxAlcoholUnits: 1.0,
         alcoholResetDate: "2026-09-14T00:00:00+05:30", // Next Monday
         // Cigarettes: Alcohol used == 0 => High 5, Low 10
-        highNicotineUsed: 0,
-        lowNicotineUsed: 0
+        highHarmfulUsed: 0,
+        lowHarmfulUsed: 0
       },
       personaBadge: "Clean Citizen (Full Limit Available)",
       personaDescription: "New cycle. Zero quota used. Can book 1 full bottle OR 2 beers OR 2 wines. Full cigarette limit (5 High / 10 Low)."
@@ -710,8 +710,8 @@ const TASMAC_DATA = {
         maxAlcoholUnits: 1.0,
         alcoholResetDate: "2026-09-14T00:00:00+05:30",
         // Since alcoholUsedUnits > 0: Cigarette limits reduced to max 3 High / 6 Low!
-        highNicotineUsed: 1,
-        lowNicotineUsed: 2
+        highHarmfulUsed: 1,
+        lowHarmfulUsed: 2
       },
       personaBadge: "Active Citizen (Partial Limit Used)",
       personaDescription: "Consumed 1 Beer (0.5 unit). Cigarette limits dynamically reduced from 5/10 to 3/6."
@@ -729,8 +729,8 @@ const TASMAC_DATA = {
         alcoholUsedUnits: 1.0, // Limit exhausted!
         maxAlcoholUnits: 1.0,
         alcoholResetDate: "2026-09-14T00:00:00+05:30",
-        highNicotineUsed: 2,
-        lowNicotineUsed: 4
+        highHarmfulUsed: 2,
+        lowHarmfulUsed: 4
       },
       personaBadge: "Limit Reached Citizen (Booking Blocked)",
       personaDescription: "Weekly alcohol quota completely exhausted (1.0 unit used). Alcohol booking is disabled."
@@ -758,8 +758,8 @@ const TASMAC_DATA = {
         alcoholUsedUnits: 0,
         maxAlcoholUnits: 0, // Blocked
         alcoholResetDate: "2026-11-15T00:00:00+05:30",
-        highNicotineUsed: 0,
-        lowNicotineUsed: 0
+        highHarmfulUsed: 0,
+        lowHarmfulUsed: 0
       },
       personaBadge: "Legally Restricted Account (DUI Recorded)",
       personaDescription: "Legally recorded Drunk Driving case under MVA Sec 185. Alcohol booking barred by government order."

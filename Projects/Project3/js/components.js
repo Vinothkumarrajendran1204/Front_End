@@ -359,10 +359,10 @@ const TasmacComponents = {
             </div>
           </div>
 
-          <!-- High Nicotine -->
+          <!-- High Harmful -->
           <div style="margin-bottom:0.75rem;">
             <div style="display:flex; justify-content:space-between; font-size:0.78rem; font-weight:600; margin-bottom:0.25rem;">
-              <span>High Nicotine Packs</span>
+              <span>High Harmful Packs</span>
               <span>${cig.high.used} / ${cig.high.max} used (${cig.high.remaining} left)</span>
             </div>
             <div class="progress-bar-bg" style="height:6px;">
@@ -370,10 +370,10 @@ const TasmacComponents = {
             </div>
           </div>
 
-          <!-- Low Nicotine -->
+          <!-- Low Harmful -->
           <div>
             <div style="display:flex; justify-content:space-between; font-size:0.78rem; font-weight:600; margin-bottom:0.25rem;">
-              <span>Low Nicotine Packs</span>
+              <span>Low Harmful Packs</span>
               <span>${cig.low.used} / ${cig.low.max} used (${cig.low.remaining} left)</span>
             </div>
             <div class="progress-bar-bg" style="height:6px;">
@@ -826,11 +826,11 @@ const TasmacComponents = {
         `;
       }
     } else if (product.category === "Cigarettes") {
-      const isHigh = product.nicotineType === "high";
+      const isHigh = product.HarmfulType === "high";
       const cigLimits = isHigh ? userLimits.cigarettes.high : userLimits.cigarettes.low;
       limitChipHtml = `
         <div class="user-limit-chip ${cigLimits.isReached ? 'blocked' : ''}">
-          <span>${isHigh ? 'High' : 'Low'} Nicotine Quota</span>
+          <span>${isHigh ? 'High' : 'Low'} Harmful Quota</span>
           <span>${cigLimits.remaining} of ${cigLimits.max} packs left</span>
         </div>
       `;
@@ -924,8 +924,8 @@ const TasmacComponents = {
                   2. Cigarette Quota Dynamic Tiering (Section 6)
                 </h4>
                 <ul style="font-size:0.85rem; color:var(--text-secondary); line-height:1.6; padding-left:1.2rem;">
-                  <li><strong>If Alcohol NOT Used:</strong> High Nicotine max 5 packs/wk • Low Nicotine max 10 packs/wk.</li>
-                  <li><strong>If Alcohol HAS Been Used:</strong> High Nicotine dynamically restricted to max 3 packs/wk • Low Nicotine to 6 packs/wk.</li>
+                  <li><strong>If Alcohol NOT Used:</strong> High Harmful max 5 packs/wk • Low Harmful max 10 packs/wk.</li>
+                  <li><strong>If Alcohol HAS Been Used:</strong> High Harmful dynamically restricted to max 3 packs/wk • Low Harmful to 6 packs/wk.</li>
                   <li>Promotes public health and prevents co-addiction escalation.</li>
                 </ul>
               </div>

@@ -133,8 +133,8 @@ class TasmacStore {
           alcoholUsedUnits: 0,
           maxAlcoholUnits: 1.0,
           alcoholResetDate: "2026-09-14T00:00:00+05:30",
-          highNicotineUsed: 0,
-          lowNicotineUsed: 0
+          highHarmfulUsed: 0,
+          lowHarmfulUsed: 0
         },
         personaBadge: "New Registered Citizen",
         personaDescription: "Newly registered citizen via Aadhaar OTP."
@@ -192,8 +192,8 @@ class TasmacStore {
     const quota = user.weeklyQuota || {
       alcoholUsedUnits: 0,
       maxAlcoholUnits: 1.0,
-      highNicotineUsed: 0,
-      lowNicotineUsed: 0,
+      highHarmfulUsed: 0,
+      lowHarmfulUsed: 0,
       alcoholResetDate: "2026-09-14T00:00:00+05:30"
     };
 
@@ -211,8 +211,8 @@ class TasmacStore {
     const maxHigh = hasAlcoholUsed ? 3 : 5;
     const maxLow = hasAlcoholUsed ? 6 : 10;
 
-    const highUsed = Math.min(maxHigh, quota.highNicotineUsed || 0);
-    const lowUsed = Math.min(maxLow, quota.lowNicotineUsed || 0);
+    const highUsed = Math.min(maxHigh, quota.highHarmfulUsed || 0);
+    const lowUsed = Math.min(maxLow, quota.lowHarmfulUsed || 0);
 
     const highRemaining = Math.max(0, maxHigh - highUsed);
     const lowRemaining = Math.max(0, maxLow - lowUsed);
@@ -295,12 +295,12 @@ class TasmacStore {
         };
       }
     } else if (product.category === "Cigarettes") {
-      const isHigh = product.nicotineType === "high";
+      const isHigh = product.HarmfulType === "high";
       const cigLimits = isHigh ? limits.cigarettes.high : limits.cigarettes.low;
       if (cigLimits.isReached) {
         return {
           allowed: false,
-          reason: `Weekly ${isHigh ? "High" : "Low"} Nicotine cigarette quota reached (${cigLimits.max} packs max per week).`
+          reason: `Weekly ${isHigh ? "High" : "Low"} Harmful cigarette quota reached (${cigLimits.max} packs max per week).`
         };
       }
       if (quantity > cigLimits.remaining) {
@@ -348,10 +348,10 @@ class TasmacStore {
       } else if (product.category === "Beer" || product.category === "Wine") {
         user.weeklyQuota.alcoholUsedUnits += (product.quotaCost || 0.5) * quantity;
       } else if (product.category === "Cigarettes") {
-        if (product.nicotineType === "high") {
-          user.weeklyQuota.highNicotineUsed = (user.weeklyQuota.highNicotineUsed || 0) + quantity;
+        if (product.HarmfulType === "high") {
+          user.weeklyQuota.highHarmfulUsed = (user.weeklyQuota.highHarmfulUsed || 0) + quantity;
         } else {
-          user.weeklyQuota.lowNicotineUsed = (user.weeklyQuota.lowNicotineUsed || 0) + quantity;
+          user.weeklyQuota.lowHarmfulUsed = (user.weeklyQuota.lowHarmfulUsed || 0) + quantity;
         }
       }
       // Update currentUser session reference
@@ -421,10 +421,10 @@ class TasmacStore {
         } else if (product.category === "Beer" || product.category === "Wine") {
           user.weeklyQuota.alcoholUsedUnits = Math.max(0, user.weeklyQuota.alcoholUsedUnits - (product.quotaCost || 0.5) * booking.quantity);
         } else if (product.category === "Cigarettes") {
-          if (product.nicotineType === "high") {
-            user.weeklyQuota.highNicotineUsed = Math.max(0, user.weeklyQuota.highNicotineUsed - booking.quantity);
+          if (product.HarmfulType === "high") {
+            user.weeklyQuota.highHarmfulUsed = Math.max(0, user.weeklyQuota.highHarmfulUsed - booking.quantity);
           } else {
-            user.weeklyQuota.lowNicotineUsed = Math.max(0, user.weeklyQuota.lowNicotineUsed - booking.quantity);
+            user.weeklyQuota.lowHarmfulUsed = Math.max(0, user.weeklyQuota.lowHarmfulUsed - booking.quantity);
           }
         }
       }
@@ -531,8 +531,8 @@ class TasmacStore {
       alcoholUsedUnits: 0,
       maxAlcoholUnits: 1.0,
       alcoholResetDate: "2026-09-14T00:00:00+05:30",
-      highNicotineUsed: 0,
-      lowNicotineUsed: 0
+      highHarmfulUsed: 0,
+      lowHarmfulUsed: 0
     };
 
     if (this.state.currentUser?.aadhaarNumber === aadhaarNumber) {
