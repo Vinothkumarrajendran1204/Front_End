@@ -86,8 +86,6 @@ const TasmacComponents = {
             <div class="emblem-icon">TN</div>
             <div class="brand-text">
               <span class="brand-title">TASMAC Smart Booking</span>
-              <span class="brand-sub">Quota & Limit Management Portal</span>
-              <span class="brand-tamil">தமிழ்நாடு அரசு - டாஸ்மாக் இணைய முன்பதிவு</span>
             </div>
           </div>
 
