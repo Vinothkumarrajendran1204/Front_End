@@ -1,22 +1,22 @@
 
- let btn = document.getElementById("btn")
+let btn = document.getElementById("btn")
 
 // let array= []
 
- btn.addEventListener("click",(e)=>{
+btn.addEventListener("click",(e)=>{
 
-     e.preventDefault()
-     let name = document.getElementById("name").value
-     let age = document.getElementById("age").value
+    e.preventDefault()
+    let name = document.getElementById("name").value
+    let age = document.getElementById("age").value
 
- const getLocal = JSON.parse(localStorage.getItem("Details")) || []
+const getLocal = JSON.parse(localStorage.getItem("Details")) || []
 
-     let  object = {name,age}
+    let  object = {name,age}
 
-     getLocal.push(object)
+    getLocal.push(object)
 
-     localStorage.setItem("Details", JSON.stringify(getLocal));
+    localStorage.setItem("Details", JSON.stringify(getLocal));
 
 
 
- })
+})
